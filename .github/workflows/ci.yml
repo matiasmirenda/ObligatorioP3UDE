@@ -1,0 +1,45 @@
+name: C++ CI
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  test-and-coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ lcov bc
+
+      - name: Compile tests with coverage
+        run: |
+          g++ -std=c++17 -Wall -Wextra -pedantic --coverage \
+            -I src/include \
+            src/*.cpp test/*.cpp \
+            -o tests
+
+      - name: Run tests
+        run: ./tests
+
+      - name: Generate coverage report
+        run: |
+          lcov --capture --directory . --output-file coverage.info
+          lcov --remove coverage.info '/usr/*' '*/test/*' '*/main.cpp' --output-file coverage.filtered.info
+          lcov --list coverage.filtered.info
+
+      - name: Check 100% coverage
+        run: |
+          COVERAGE=$(lcov --summary coverage.filtered.info | grep "lines" | awk '{print $2}' | sed 's/%//')
+          echo "Coverage: $COVERAGE%"
+          if (( $(echo "$COVERAGE < 100" | bc -l) )); then
+            echo "Coverage is below 100%"
+            exit 1
+          fi
