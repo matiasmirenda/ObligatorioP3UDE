@@ -23,7 +23,9 @@ jobs:
         run: |
           g++ -std=c++17 -Wall -Wextra -pedantic --coverage \
             -I src/include \
-            src/*.cpp test/*.cpp \
+            src/cpp/*.cpp \
+            test/cpp/*.cpp \
+            test/main_test.cpp \
             -o tests
 
       - name: Run tests
