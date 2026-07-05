@@ -1,0 +1,62 @@
+name: C++ CI
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  test-and-coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ lcov bc
+
+      - name: Create build directory
+        run: mkdir -p build
+
+      - name: Compile tests with coverage
+        run: |
+          g++ -std=c++17 \
+              -Wall -Wextra -pedantic \
+              --coverage \
+              -I src/include \
+              src/cpp/*.cpp \
+              test/cpp/*.cpp \
+              test/main_test.cpp \
+              -o build/tests
+
+      - name: Run tests
+        run: ./build/tests
+
+      - name: Generate coverage report
+        run: |
+          lcov --capture \
+               --directory . \
+               --output-file build/coverage.info
+
+          lcov --remove build/coverage.info \
+               '*/test/*' \
+               --output-file build/coverage.filtered.info
+
+          lcov --list build/coverage.filtered.info
+
+      - name: Verify 100% coverage
+        run: |
+          COVERAGE=$(lcov --summary build/coverage.filtered.info | awk '/lines/ {gsub("%","",$2); print $2}')
+
+          echo "Line coverage: ${COVERAGE}%"
+
+          if (( $(echo "$COVERAGE < 100" | bc -l) )); then
+            echo "❌ Coverage must be 100%."
+            exit 1
+          fi
+
+          echo "✅ Coverage is 100%."
