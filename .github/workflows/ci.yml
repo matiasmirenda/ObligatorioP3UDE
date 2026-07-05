@@ -41,7 +41,6 @@ jobs:
             --output-file build/coverage.info
 
           lcov --remove build/coverage.info \
-            '/usr/*' \
             '*/test/*' \
             '*/main.cpp' \
             --output-file build/coverage.filtered.info
