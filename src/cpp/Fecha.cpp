@@ -15,26 +15,32 @@ void DarFecha(Fecha f)
     printf("%02d / %02d / %04d", f.dia, f.mes, f.anio);
 }
 
-bool EsMismaFecha(Fecha f1, Fecha f2)
+Boolean EsMismaFecha(Fecha f1, Fecha f2)
 {
-    bool igual = false;
+    Boolean igual = FALSE;
 
     if (f1.dia == f2.dia && f1.mes == f2.mes && f1.anio == f2.anio)
-        igual = true;
+        igual = TRUE;
 
     return igual;
 }
 
-bool EsFechaMayor(Fecha f1, Fecha f2)
+Boolean EsFechaMayor(Fecha f1, Fecha f2)
 {
-    return (f1.anio > f2.anio) ||
-           (f1.anio == f2.anio && f1.mes > f2.mes) ||
-           (f1.anio == f2.anio && f1.mes == f2.mes && f1.dia > f2.dia);
+    Boolean esMayor = FALSE;
+
+    if ((f1.anio > f2.anio) ||
+        (f1.anio == f2.anio && f1.mes > f2.mes) ||
+        (f1.anio == f2.anio && f1.mes == f2.mes && f1.dia > f2.dia))
+    {
+        esMayor = TRUE;
+    }
+    return esMayor;
 }
 
-bool EsFechaValida(Fecha f)
+Boolean EsFechaValida(Fecha f)
 {
-    bool fechaValida = false;
+    Boolean fechaValida = FALSE;
     int diasMes;
 
     if (f.mes >= 1 && f.mes <= 12)
@@ -59,7 +65,10 @@ bool EsFechaValida(Fecha f)
             diasMes = 31;
         }
 
-        fechaValida = (f.dia >= 1 && f.dia <= diasMes);
+        if (f.dia >= 1 && f.dia <= diasMes)
+        {
+            fechaValida = TRUE;
+        }
     }
 
     return fechaValida;
