@@ -62,3 +62,16 @@ Curso Ultimo(Lista l)
 {
     return l.ult->info;
 }
+
+Curso KEsimo(Lista l, int k)
+{
+    NodoLista *aux = l.prim;
+    int i = 1;
+    while (i < k)
+    {
+        aux = aux->sig;
+        i++;
+    }
+
+    return aux->info;
+}

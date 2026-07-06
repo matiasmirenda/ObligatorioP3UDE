@@ -35,4 +35,8 @@ Curso Primero(Lista l);
 // Precondición: La lista no esta vacia
 Curso Ultimo(Lista l);
 
+// Devuelve el elemento que ocupa la posición k
+// Precondición: k es mayor a 1 y menor al largo de la lista
+Curso KEsimo(Lista l, int k);
+
 #endif
