@@ -18,6 +18,7 @@ Boolean EsVacia(Lista l)
 
 int Largo(Lista l)
 {
+
     int cont = 0;
 
     if (l.prim != NULL)
