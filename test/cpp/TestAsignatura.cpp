@@ -28,4 +28,23 @@ void TestAsignatura()
     assert(streq(DarNombreAsignatura(a), "Programacion III"));
 
     fclose(entrada);
+
+    Asignatura b;
+
+    FILE *archivo2 = fopen("build/input_asignatura_2.txt", "w");
+    assert(archivo2 != NULL);
+
+    fprintf(archivo2, "Disenio Textil\n");
+    fprintf(archivo2, "80\n");
+    fprintf(archivo2, "1\n");
+
+    fclose(archivo2);
+
+    FILE *entrada2 = freopen("build/input_asignatura_2.txt", "r", stdin);
+    assert(entrada2 != NULL);
+
+    CargarAsignatura(b);
+
+    assert(DarCantidadHorasAsignatura(b) == 80);
+    assert(EsAsignaturaOptativa(b) == TRUE);
 }
