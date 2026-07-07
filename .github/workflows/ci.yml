@@ -28,6 +28,7 @@ jobs:
               -Wall -Wextra -pedantic \
               --coverage \
               -I src/include \
+              -I test/include \
               src/cpp/*.cpp \
               test/cpp/*.cpp \
               test/main_test.cpp \
