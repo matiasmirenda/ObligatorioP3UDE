@@ -26,7 +26,6 @@ void TestHash()
     assert(Pertenece(hash, 87654321) == FALSE);
 
     aux = Obtener(hash, 12345678);
-
     assert(aux.cedula == 12345678);
 
     // Insertar segundo
@@ -35,7 +34,6 @@ void TestHash()
     assert(Pertenece(hash, 87654321) == TRUE);
 
     aux = Obtener(hash, 87654321);
-
     assert(aux.cedula == 87654321);
 
     // Eliminar primero
@@ -49,23 +47,45 @@ void TestHash()
 
     assert(Pertenece(hash, 87654321) == FALSE);
 
-    Alumno c;
-    Alumno d;
+    // -----------------------------
+    // Eliminar un nodo que no es el primero
+    // -----------------------------
+    Alumno c, d, e;
 
     c.cedula = 1;
     d.cedula = 102;
+    e.cedula = 203;
 
     Insertar(hash, c);
     Insertar(hash, d);
+    Insertar(hash, e);
 
-    // Como Insertar mete al frente, queda:
-    // 102 -> 1
-    // Entonces eliminar 1 cubre el caso "no es el primero".
     Eliminar(hash, 1);
 
     assert(Pertenece(hash, 1) == FALSE);
     assert(Pertenece(hash, 102) == TRUE);
+    assert(Pertenece(hash, 203) == TRUE);
 
     Eliminar(hash, 102);
+    Eliminar(hash, 203);
+
     assert(Pertenece(hash, 102) == FALSE);
+    assert(Pertenece(hash, 203) == FALSE);
+
+    // -----------------------------
+    // Clave negativa
+    // -----------------------------
+    Alumno f;
+    f.cedula = -50;
+
+    Insertar(hash, f);
+
+    assert(Pertenece(hash, -50) == TRUE);
+
+    aux = Obtener(hash, -50);
+    assert(aux.cedula == -50);
+
+    Eliminar(hash, -50);
+
+    assert(Pertenece(hash, -50) == FALSE);
 }
