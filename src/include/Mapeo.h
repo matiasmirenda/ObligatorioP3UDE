@@ -21,7 +21,7 @@ typedef struct
 void Crear(Mapeo &m);
 
 // Determina si existe una asignatura registrada en la posición pos.
-// Precondición: pos mayor que 0 y m enor a TAM
+// Precondición: pos mayor que 0 y menor a TAM
 Boolean Pertenece(Mapeo m, int pos);
 
 // Registra la asignatura e en la siguiente posicion libre del mapeo.

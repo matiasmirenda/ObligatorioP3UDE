@@ -3,10 +3,10 @@
 void Crear(Mapeo &m)
 {
     int i;
+    m.cantidad = 0;
     for (i = 0; i < TAM; i++)
     {
         m.celdas[i].existe = FALSE;
-        m.cantidad = 0;
     }
 }
 
