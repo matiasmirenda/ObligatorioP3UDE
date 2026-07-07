@@ -27,10 +27,6 @@ int Largo(Lista l);
 // Agrega un elemento al final de la lista.
 void InsBack(Lista &l, Curso c);
 
-// Devuelve el primer elemento de la lista.
-// Precondición: La lista no esta vacia
-Curso Primero(Lista l);
-
 // Devuelve el último elemento de la lista.
 // Precondición: La lista no esta vacia
 Curso Ultimo(Lista l);

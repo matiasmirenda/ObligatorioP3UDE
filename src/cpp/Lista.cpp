@@ -54,11 +54,6 @@ void InsBack(Lista &l, Curso c)
     }
 }
 
-Curso Primero(Lista l)
-{
-    return l.prim->info;
-}
-
 Curso Ultimo(Lista l)
 {
     return l.ult->info;
