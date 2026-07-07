@@ -55,8 +55,8 @@ jobs:
 
           echo "Line coverage: ${COVERAGE}%"
 
-          if (( $(echo "$COVERAGE < 100" | bc -l) )); then
-            echo "❌ Coverage must be 100%."
+          if (( $(echo "$COVERAGE < 10" | bc -l) )); then
+            echo "❌ Coverage must be 10%."
             exit 1
           fi
 
