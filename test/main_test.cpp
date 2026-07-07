@@ -1,9 +1,16 @@
-#include "include/TestFecha.h"
+#include "include/TestAlumnos.h"
+#include "include/TestAsignatura.h"
+#include "include/TestAsignaturas.h"
+#include "include/TestCurso.h"
+#include "include/TestHash.h"
 
 int main()
 {
-    TestCrearFecha();
-    TestEsBisiesto();
+    TestAlumnos();
+    TestAsignatura();
+    TestAsignaturas();
+    TestCurso();
+    TestHash();
 
     return 0;
 }
