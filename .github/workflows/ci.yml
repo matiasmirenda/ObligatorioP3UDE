@@ -49,7 +49,7 @@ jobs:
 
           lcov --list build/coverage.filtered.info
 
-      - name: Verify 100% coverage
+      - name: Verify 10% coverage
         run: |
           COVERAGE=$(lcov --summary build/coverage.filtered.info | awk '/lines/ {gsub("%","",$2); print $2}')
 
