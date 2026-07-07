@@ -1,9 +1,14 @@
 #include "include/TestFecha.h"
+#include <stdio.h>
 
 int main()
 {
-    TestCrearFecha();
-    TestEsBisiesto();
+    //  MODULO FECHA
+    TestEsMismaFecha();
+    TestEsFechaValida();
+    TestEsFechaMayor();
 
-    return 0;
+    printf("\n------------------------------------------");
+    printf("\n   TODOS LOS TEST FINALIZARON CON EXITO");
+    printf("\n------------------------------------------\n");
 }
