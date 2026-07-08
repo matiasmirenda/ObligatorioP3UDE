@@ -2,11 +2,6 @@
 #include "../include/TestCurso.h"
 
 #include <assert.h>
-
-#include "../../src/include/Curso.h"
-#include "../include/TestCurso.h"
-
-#include <assert.h>
 #include <stdio.h>
 
 void TestCurso()
@@ -14,6 +9,7 @@ void TestCurso()
     Curso c;
 
     FILE *archivo = fopen("build/input_curso.txt", "w");
+    assert(archivo != NULL);
 
     fprintf(archivo, "3\n");
     fprintf(archivo, "10\n");
@@ -23,7 +19,8 @@ void TestCurso()
 
     fclose(archivo);
 
-    freopen("build/input_curso.txt", "r", stdin);
+    FILE *entrada = freopen("build/input_curso.txt", "r", stdin);
+    assert(entrada != NULL);
 
     CargarCurso(c);
 
@@ -37,9 +34,6 @@ void TestCurso()
     assert(f.mes == 7);
     assert(f.anio == 2026);
 
-    // También probamos el caso desaprobado
     c.calificacion = 5;
     assert(CursoAprobado(c) == FALSE);
-
-    fclose(archivo);
 }

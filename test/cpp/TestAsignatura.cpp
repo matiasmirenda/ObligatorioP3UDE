@@ -24,10 +24,7 @@ void TestAsignatura()
 
     assert(DarCantidadHorasAsignatura(a) == 96);
     assert(EsAsignaturaOptativa(a) == FALSE);
-
     assert(streq(DarNombreAsignatura(a), "Programacion III"));
-
-    fclose(entrada);
 
     Asignatura b;
 
@@ -48,6 +45,4 @@ void TestAsignatura()
     assert(streq(DarNombreAsignatura(b), "Disenio Textil"));
     assert(DarCantidadHorasAsignatura(b) == 80);
     assert(EsAsignaturaOptativa(b) == TRUE);
-
-    fclose(entrada2);
 }
