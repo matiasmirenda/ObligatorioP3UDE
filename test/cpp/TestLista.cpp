@@ -80,7 +80,7 @@ void TestUltimo()
 
     Curso u = Ultimo(l);
 
-    assert(DarNumeroAsignaturaCurso(u) == DarCalificacionCurso(c2));
+    assert(DarNumeroAsignaturaCurso(u) == DarNumeroAsignaturaCurso(c2));
     assert(DarCalificacionCurso(u) == DarCalificacionCurso(c2));
 }
 

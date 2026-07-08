@@ -14,6 +14,8 @@ void TestAsignaturas()
     assert(CantidadAsignaturas(asignaturas) == 0);
     assert(ExisteAsignatura(asignaturas, 0) == FALSE);
 
+    strcrear(a.nombre);
+    strcop(a.nombre, "Programacion III");
     a.cantidadHoras = 96;
     a.esOptativa = FALSE;
 
@@ -25,6 +27,7 @@ void TestAsignaturas()
 
     obtenida = ObtenerAsignatura(asignaturas, 0);
 
+    assert(streq(DarNombreAsignatura(obtenida), DarNombreAsignatura(a)));
     assert(DarCantidadHorasAsignatura(obtenida) == 96);
     assert(EsAsignaturaOptativa(obtenida) == FALSE);
 }
