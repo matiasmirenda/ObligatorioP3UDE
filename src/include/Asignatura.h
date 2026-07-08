@@ -1,19 +1,25 @@
-#ifndef ASIGNATURA_H
-#define ASIGNATURA_H
-#include "Boolean.h"
+#ifndef ASIGNATURA_H_INCLUDED
+#define ASIGNATURA_H_INCLUDED
+
+#include "String.h"
 
 typedef struct
 {
-    int numero;
-    int nombre;
-    int cantHoras;
-    Boolean optativa;
+    String nombre;
+    int cantidadHoras;
+    Boolean esOptativa;
 } Asignatura;
 
-Asignatura ArmarAsignatura(int numero, int nombre, int cantHoras, bool optativa);
-int ObtenerNumero(Asignatura a);
-int ObtenerNombre(Asignatura a);
-int ObtenerCantHoras(Asignatura a);
-bool EsOptativa(Asignatura a);
+// Lee por teclado los datos de una asignatura y la crea.
+void CargarAsignatura(Asignatura &a);
+
+// Devuelve el nombre de la asignatura.
+String DarNombreAsignatura(Asignatura a);
+
+// Devuelve la cantidad de horas de la asignatura.
+int DarCantidadHorasAsignatura(Asignatura a);
+
+// Devuelve TRUE si la asignatura es optativa.
+Boolean EsAsignaturaOptativa(Asignatura a);
 
 #endif

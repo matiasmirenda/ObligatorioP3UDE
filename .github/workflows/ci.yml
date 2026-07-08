@@ -60,4 +60,4 @@ jobs:
             exit 1
           fi
 
-          echo "✅ Coverage is 100%."
+          echo "✅ Coverage is ok."

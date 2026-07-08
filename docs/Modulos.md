@@ -6,6 +6,11 @@ subgraph Boolean[" "]
     BooleanH["Boolean.h"] --- BooleanCPP["Boolean.cpp"]
 end
 
+subgraph String[" "]
+    direction LR
+    StringH["String.h"] --- StringCPP["String.cpp"]
+end
+
 subgraph Fecha[" "]
     direction LR
     FechaH["Fecha.h"] --- FechaCPP["Fecha.cpp"]
@@ -51,6 +56,11 @@ subgraph Alumno[" "]
     AlumnoH["Alumno.h"] --- AlumnoCPP["Alumno.cpp"]
 end
 
+subgraph Alumnos[" "]
+    direction LR
+    AlumnosH["Alumnos.h"] --- AlumnosCPP["Alumnos.cpp"]
+end
+
 subgraph Previas[" "]
     direction LR
     PreviasH["Previas.h"] --- PreviasCPP["Previas.cpp"]
@@ -66,13 +76,14 @@ subgraph Main[" "]
     MainCPP["main.cpp"]
 end
 
+BooleanH --> StringH
 BooleanH --> FechaH
-
 BooleanH --> ListaH
 BooleanH --> HashH
 BooleanH --> MapeoH
 BooleanH --> GrafoH
 
+StringH --> AsignaturaH
 BooleanH --> AsignaturaH
 
 FechaH --> CursoH
@@ -80,16 +91,20 @@ FechaH --> CursoH
 ListaH --> EscolaridadH
 CursoH --> EscolaridadH
 
+StringH --> AlumnoH
 EscolaridadH --> AlumnoH
+
+AlumnoH --> HashH
+HashH --> AlumnosH
+AlumnoH --> AlumnosH
 
 GrafoH --> PreviasH
 AsignaturaH --> PreviasH
 
-AlumnoH --> AcademiaH
-AsignaturaH --> AcademiaH
-PreviasH --> AcademiaH
-HashH --> AcademiaH
 MapeoH --> AcademiaH
+AlumnosH --> AcademiaH
+PreviasH --> AcademiaH
+AsignaturaH --> AcademiaH
 
 AcademiaH --> MainCPP
 ```

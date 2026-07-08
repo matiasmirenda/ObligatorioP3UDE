@@ -1,5 +1,5 @@
-#include "Lista.h"
-#include "TestLista.h"
+#include "../../src/include/Lista.h"
+#include "../include/TestLista.h"
 
 #include <cassert>
 
@@ -80,8 +80,8 @@ void TestUltimo()
 
     Curso u = Ultimo(l);
 
-    assert(u.asignatura == c2.asignatura);
-    assert(u.nota == c2.nota);
+    assert(DarNumeroAsignaturaCurso(u) == DarNumeroAsignaturaCurso(c2));
+    assert(DarCalificacionCurso(u) == DarCalificacionCurso(c2));
 }
 
 void TestKEsimo()
@@ -97,11 +97,11 @@ void TestKEsimo()
     InsBack(l, c2);
     InsBack(l, c3);
 
-    assert(KEsimo(l, 1).asignatura == c1.asignatura);
-    assert(KEsimo(l, 2).asignatura == c2.asignatura);
-    assert(KEsimo(l, 3).asignatura == c3.asignatura);
+    assert(DarNumeroAsignaturaCurso(KEsimo(l, 1)) == DarNumeroAsignaturaCurso(c1));
+    assert(DarNumeroAsignaturaCurso(KEsimo(l, 2)) == DarNumeroAsignaturaCurso(c2));
+    assert(DarNumeroAsignaturaCurso(KEsimo(l, 3)) == DarNumeroAsignaturaCurso(c3));
 
-    assert(KEsimo(l, 1).nota == c1.nota);
-    assert(KEsimo(l, 2).nota == c2.nota);
-    assert(KEsimo(l, 3).nota == c3.nota);
+    assert(DarCalificacionCurso(KEsimo(l, 1)) == DarCalificacionCurso(c1));
+    assert(DarCalificacionCurso(KEsimo(l, 2)) == DarCalificacionCurso(c2));
+    assert(DarCalificacionCurso(KEsimo(l, 3)) == DarCalificacionCurso(c3));
 }

@@ -2,12 +2,12 @@
 #define FECHA_H
 #include "Boolean.h"
 
-struct Fecha
+typedef struct
 {
     int dia;
     int mes;
     int anio;
-};
+} Fecha;
 
 // Carga una fecha inresada por teclado
 void CargarFecha(Fecha &f);

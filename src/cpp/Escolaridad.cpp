@@ -38,8 +38,8 @@ Boolean AsignaturaAprobada(Escolaridad e, int numAsignatura)
     while (i <= Largo(e.cursos) && !encontrada)
     {
         Curso c = KEsimo(e.cursos, i);
-        if (ObtenerNumAsignatura(c) == numAsignatura &&
-            ObtenerCalificacion(c) >= NOTA_APROBACION)
+        if (DarNumeroAsignaturaCurso(c) == numAsignatura &&
+            DarCalificacionCurso(c) >= NOTA_APROBACION)
             encontrada = TRUE;
         i++;
     }
@@ -53,7 +53,7 @@ int CantidadAprobados(Escolaridad e)
     for (i = 1; i <= Largo(e.cursos); i++)
     {
         Curso c = KEsimo(e.cursos, i);
-        if (ObtenerCalificacion(c) >= NOTA_APROBACION)
+        if (DarCalificacionCurso(c) >= NOTA_APROBACION)
             cant++;
     }
     return cant;

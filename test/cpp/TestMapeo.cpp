@@ -1,6 +1,19 @@
-#include "Mapeo.h"
-#include "TestMapeo.h"
+#include "../../src/include/Mapeo.h"
+#include "../include/TestMapeo.h"
+
 #include <cassert>
+
+Asignatura CrearAsignaturaMapeoTest(char nombre[], int horas, Boolean optativa)
+{
+    Asignatura a;
+
+    strcrear(a.nombre);
+    strcop(a.nombre, nombre);
+    a.cantidadHoras = horas;
+    a.esOptativa = optativa;
+
+    return a;
+}
 
 void TestCrearMapeo()
 {
@@ -21,8 +34,11 @@ void TestInsertarMapeo()
     Mapeo m;
     Crear(m);
 
-    Asignatura a1 = {1, 100, 60, FALSE};
-    Asignatura a2 = {2, 200, 90, TRUE};
+    char n1[] = "Programacion";
+    char n2[] = "Matematica";
+
+    Asignatura a1 = CrearAsignaturaMapeoTest(n1, 60, FALSE);
+    Asignatura a2 = CrearAsignaturaMapeoTest(n2, 90, TRUE);
 
     Insertar(m, a1);
 
@@ -43,7 +59,8 @@ void TestPerteneceMapeo()
     Mapeo m;
     Crear(m);
 
-    Asignatura a = {1, 100, 60, FALSE};
+    char n[] = "Disenio";
+    Asignatura a = CrearAsignaturaMapeoTest(n, 60, FALSE);
 
     assert(Pertenece(m, 0) == FALSE);
 
@@ -58,8 +75,11 @@ void TestObtenerMapeo()
     Mapeo m;
     Crear(m);
 
-    Asignatura a1 = {1, 100, 60, FALSE};
-    Asignatura a2 = {2, 200, 90, TRUE};
+    char n1[] = "Programacion";
+    char n2[] = "Matematica";
+
+    Asignatura a1 = CrearAsignaturaMapeoTest(n1, 60, FALSE);
+    Asignatura a2 = CrearAsignaturaMapeoTest(n2, 90, TRUE);
 
     Insertar(m, a1);
     Insertar(m, a2);
@@ -67,15 +87,13 @@ void TestObtenerMapeo()
     Asignatura r1 = Obtener(m, 0);
     Asignatura r2 = Obtener(m, 1);
 
-    assert(r1.numero == a1.numero);
-    assert(r1.nombre == a1.nombre);
-    assert(r1.cantHoras == a1.cantHoras);
-    assert(r1.optativa == a1.optativa);
+    assert(streq(DarNombreAsignatura(r1), DarNombreAsignatura(a1)));
+    assert(DarCantidadHorasAsignatura(r1) == DarCantidadHorasAsignatura(a1));
+    assert(EsAsignaturaOptativa(r1) == EsAsignaturaOptativa(a1));
 
-    assert(r2.numero == a2.numero);
-    assert(r2.nombre == a2.nombre);
-    assert(r2.cantHoras == a2.cantHoras);
-    assert(r2.optativa == a2.optativa);
+    assert(streq(DarNombreAsignatura(r2), DarNombreAsignatura(a2)));
+    assert(DarCantidadHorasAsignatura(r2) == DarCantidadHorasAsignatura(a2));
+    assert(EsAsignaturaOptativa(r2) == EsAsignaturaOptativa(a2));
 }
 
 void TestCantidadRegistradasMapeo()
@@ -83,14 +101,22 @@ void TestCantidadRegistradasMapeo()
     Mapeo m;
     Crear(m);
 
+    char n1[] = "A";
+    char n2[] = "B";
+    char n3[] = "C";
+
+    Asignatura a1 = CrearAsignaturaMapeoTest(n1, 60, FALSE);
+    Asignatura a2 = CrearAsignaturaMapeoTest(n2, 90, TRUE);
+    Asignatura a3 = CrearAsignaturaMapeoTest(n3, 120, FALSE);
+
     assert(CantidadRegistradas(m) == 0);
 
-    Insertar(m, {1, 100, 60, FALSE});
+    Insertar(m, a1);
     assert(CantidadRegistradas(m) == 1);
 
-    Insertar(m, {2, 200, 90, TRUE});
+    Insertar(m, a2);
     assert(CantidadRegistradas(m) == 2);
 
-    Insertar(m, {3, 300, 120, FALSE});
+    Insertar(m, a3);
     assert(CantidadRegistradas(m) == 3);
 }

@@ -71,8 +71,8 @@ void TestUltimoEscolaridad()
 
     Curso u = Ultimo(e);
 
-    assert(ObtenerNumAsignatura(u) == 102);
-    assert(ObtenerCalificacion(u) == 5);
+    assert(DarNumeroAsignaturaCurso(u) == 102);
+    assert(DarCalificacionCurso(u) == 5);
 }
 
 void TestKEsimoEscolaridad()
@@ -84,9 +84,9 @@ void TestKEsimoEscolaridad()
     InsBack(e, {102, {2, 7, 2026}, 5});
     InsBack(e, {103, {3, 7, 2026}, 10});
 
-    assert(ObtenerNumAsignatura(KEsimo(e, 1)) == 101);
-    assert(ObtenerNumAsignatura(KEsimo(e, 2)) == 102);
-    assert(ObtenerNumAsignatura(KEsimo(e, 3)) == 103);
+    assert(DarNumeroAsignaturaCurso(KEsimo(e, 1)) == 101);
+    assert(DarNumeroAsignaturaCurso(KEsimo(e, 2)) == 102);
+    assert(DarNumeroAsignaturaCurso(KEsimo(e, 3)) == 103);
 }
 
 void TestAsignaturaAprobadaEscolaridad()
