@@ -33,7 +33,9 @@ void Insertar(Mapeo &m, Asignatura e)
 
 Asignatura Obtener(Mapeo m, int pos)
 {
-    return m.celdas[pos].info;
+    Asignatura copia;
+    CopiarAsignatura(m.celdas[pos].info, copia);
+    return copia;
 }
 
 int CantidadRegistradas(Mapeo m)
