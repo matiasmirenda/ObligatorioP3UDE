@@ -1,6 +1,5 @@
-#ifndef FECHA_H_INCLUDED
-#define FECHA_H_INCLUDED
-
+#ifndef FECHA_H
+#define FECHA_H
 #include "Boolean.h"
 
 typedef struct
@@ -10,25 +9,19 @@ typedef struct
     int anio;
 } Fecha;
 
-// Crea una fecha con los valores indicados.
-Fecha CrearFecha(int dia, int mes, int anio);
-
-// Carga una fecha ingresada por teclado.
+// Carga una fecha inresada por teclado
 void CargarFecha(Fecha &f);
 
-// Devuelve TRUE si el año de la fecha es bisiesto.
-Boolean EsBisiesto(Fecha f);
-
-// Muestra una fecha por pantalla.
+// Muestra por pantalla una fecha
 void DarFecha(Fecha f);
 
-// Devuelve TRUE si ambas fechas son iguales.
+// Devuelve TRUE si ambas fechas son iguales o FALSE en caso contrario
 Boolean EsMismaFecha(Fecha f1, Fecha f2);
 
-// Devuelve TRUE si f1 es posterior a f2.
+// Devuelve TRUE si la fecha f1 es mayor que la fecha f2 o FALSE en caso contrario
 Boolean EsFechaMayor(Fecha f1, Fecha f2);
 
-// Devuelve TRUE si la fecha es válida.
-Boolean EsFechaValida(Fecha f);
+// Devuelve TRUE si la fecha ingresada es válida o FALSE en caso contrario
+Boolean EsFechaValida(Fecha f1);
 
 #endif

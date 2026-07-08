@@ -1,30 +1,34 @@
-#include "../include/Mapeo.h"
+#include "Mapeo.h"
 
 void Crear(Mapeo &m)
 {
     int i;
-
-    for (i = 0; i < TAMANIO; i++)
-        m[i].existe = FALSE;
+    m.cantidad = 0;
+    for (i = 0; i < TAM; i++)
+    {
+        m.celdas[i].existe = FALSE;
+    }
 }
 
 Boolean Pertenece(Mapeo m, int pos)
 {
-    return m[pos].existe;
+    return m.celdas[pos].existe;
 }
 
-void Insertar(Mapeo &m, T e, int pos)
+void Insertar(Mapeo &m, Asignatura e)
 {
-    m[pos].existe = TRUE;
-    m[pos].info = e;
+    m.celdas[m.cantidad].existe = TRUE;
+    m.celdas[m.cantidad].info = e;
+
+    m.cantidad++;
 }
 
-T Obtener(Mapeo m, int pos)
+Asignatura Obtener(Mapeo m, int pos)
 {
-    return m[pos].info;
+    return m.celdas[pos].info;
 }
 
-void Eliminar(Mapeo &m, int pos)
+int CantidadRegistradas(Mapeo m)
 {
-    m[pos].existe = FALSE;
+    return m.cantidad;
 }

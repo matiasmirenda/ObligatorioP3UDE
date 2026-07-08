@@ -1,37 +1,37 @@
-#ifndef MAPEO_H_INCLUDED
-#define MAPEO_H_INCLUDED
-
+#ifndef MAPEO_H
+#define MAPEO_H
 #include "Boolean.h"
 #include "Asignatura.h"
 
-const int TAMANIO = 30;
-
-typedef Asignatura T;
+const int TAM = 30;
 
 typedef struct
 {
     Boolean existe;
-    T info;
+    Asignatura info;
 } Celda;
 
-typedef Celda Mapeo[TAMANIO];
+typedef struct
+{
+    Celda celdas[TAM];
+    int cantidad;
+} Mapeo;
 
-// Crea un mapeo vacío.
+// Crea un mapeo vacío
 void Crear(Mapeo &m);
 
-// Devuelve TRUE si existe un elemento en la posición indicada.
+// Determina si existe una asignatura registrada en la posición pos.
+// Precondición: pos mayor que 0 y menor a TAM
 Boolean Pertenece(Mapeo m, int pos);
 
-// Inserta un elemento en la posición indicada.
-// Precondición: !Pertenece(m, pos)
-void Insertar(Mapeo &m, T e, int pos);
+// Registra la asignatura e en la siguiente posicion libre del mapeo.
+void Insertar(Mapeo &m, Asignatura e);
 
-// Devuelve el elemento almacenado en la posición indicada.
-// Precondición: Pertenece(m, pos)
-T Obtener(Mapeo m, int pos);
+// Devuelve la asignatura registrada en la posición pos.
+// Precondición: en pos existe una asignatura registrada
+Asignatura Obtener(Mapeo m, int pos);
 
-// Elimina el elemento almacenado en la posición indicada.
-// Precondición: Pertenece(m, pos)
-void Eliminar(Mapeo &m, int pos);
+// Devuelve la cantidad de asignaturas registradas
+int CantidadRegistradas(Mapeo m);
 
 #endif

@@ -18,7 +18,7 @@ Boolean ExisteAsignatura(Asignaturas asignaturas, int numero)
 
 void RegistrarAsignatura(Asignaturas &asignaturas, Asignatura a)
 {
-    Insertar(asignaturas.datos, a, asignaturas.cantidad);
+    Insertar(asignaturas.datos, a);
     asignaturas.cantidad++;
 }
 
