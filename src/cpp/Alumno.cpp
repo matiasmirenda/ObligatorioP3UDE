@@ -1,0 +1,56 @@
+#include "Alumno.h"
+#include "String.h"
+
+
+void CargarAlumno(Alumno &A)
+{
+    printf("Nombre: ");
+    strcrear(A.nombre);
+    scan(A.nombre);
+
+    printf("Apellido: ");
+    strcrear(A.apellido);
+    scan(A.apellido);
+
+    printf("Telefono: ");
+    strcrear(A.telefono);
+    scan(A.telefono);
+   
+    printf("Cedula: ");
+    scanf("%ld", &A.cedula);
+
+    Crear(A.escolaridad);
+}
+long int DarCedula(Alumno A) { 
+    return A.cedula; 
+}
+
+void DarNombre(Alumno A, String &nombre) { 
+    strcop(nombre, A.nombre); 
+}
+void DarApellido(Alumno A, String &apellido) { 
+    strcop(apellido, A.apellido); 
+}
+void DarTelefono(Alumno A, String &telefono) { 
+    strcop(telefono, A.telefono); 
+}
+
+Escolaridad DarEscolaridad(Alumno A) {
+     return A.escolaridad; 
+}
+
+void AgregarCursoAlumno(Alumno &A, Curso c){
+    InsBack(A.escolaridad, c);
+}
+
+int CantidadCursosAlumno(Alumno A){
+    return CantidadCursosEscolaridad(A.escolaridad);
+}
+
+int CantidadCursosAprobadosAlumno(Alumno A){
+    return CantidadAprobados(A.escolaridad);
+}
+
+Boolean TieneAsignaturaAprobadaAlumno(Alumno A, int numeroAsignatura){
+    return AsignaturaAprobada(A.escolaridad, numeroAsignatura);
+}

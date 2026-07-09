@@ -49,12 +49,25 @@ Boolean AsignaturaAprobada(Escolaridad e, int numAsignatura)
 int CantidadAprobados(Escolaridad e)
 {
     int cant = 0, i;
-
-    for (i = 1; i <= Largo(e.cursos); i++)
+    int largo = Largo(e.cursos);
+    
+    for (i = 1; i <= largo; i++)
     {
         Curso c = KEsimo(e.cursos, i);
         if (DarCalificacionCurso(c) >= NOTA_APROBACION)
             cant++;
+    }
+    return cant;
+}
+
+int CantidadCursosEscolaridad(Escolaridad e)
+{
+    int cant = 0, i;
+    int largo = Largo(e.cursos);
+
+    for (i = 1; i <= largo; i++)
+    {
+        cant++;    
     }
     return cant;
 }

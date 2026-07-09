@@ -37,4 +37,7 @@ Boolean AsignaturaAprobada(Escolaridad e, int numAsignatura);
 // Devuelve la cantidad de cursos aprobados (calificacion >= NOTA_APROBACION) registrados en la escolaridad.
 int CantidadAprobados(Escolaridad e);
 
+// Devuelve la cantidad de cursos registrados en la escolaridad.
+int CantidadCursosEscolaridad(Escolaridad e);
+
 #endif
