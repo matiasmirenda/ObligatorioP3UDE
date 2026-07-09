@@ -2,17 +2,25 @@
 #include "String.h"
 
 
-void CrearAlumno(Alumno &A, long int cedula, String nombre, String apellido, String telefono){
-     A.cedula = cedula;
+void CargarAlumno(Alumno &A)
+{
+    printf("Nombre: ");
     strcrear(A.nombre);
-    strcrear(A.apellido);
-    strcrear(A.telefono);
-    strcop(A.nombre, nombre);
-    strcop(A.apellido, apellido);
-    strcop(A.telefono, telefono);
-    CrearEscolaridad(A.escolaridad);
-}
+    scan(A.nombre);
 
+    printf("Apellido: ");
+    strcrear(A.apellido);
+    scan(A.apellido);
+
+    printf("Telefono: ");
+    strcrear(A.telefono);
+    scan(A.telefono);
+   
+    printf("Cedula: ");
+    scanf("%ld", &A.cedula);
+
+    Crear(A.escolaridad);
+}
 long int DarCedula(Alumno A) { 
     return A.cedula; 
 }
@@ -32,17 +40,17 @@ Escolaridad DarEscolaridad(Alumno A) {
 }
 
 void AgregarCursoAlumno(Alumno &A, Curso c){
-    AgregarCurso(A.escolaridad, c);
+    InsBack(A.escolaridad, c);
 }
 
 int CantidadCursosAlumno(Alumno A){
-    return CantidadCursos(A.escolaridad);
+    return CantidadCursosEscolaridad(A.escolaridad);
 }
 
 int CantidadCursosAprobadosAlumno(Alumno A){
-    return CantidadCursosAprobados(A.escolaridad);
+    return CantidadAprobados(A.escolaridad);
 }
 
 Boolean TieneAsignaturaAprobadaAlumno(Alumno A, int numeroAsignatura){
-    return TieneAsignaturaAprobada(A.escolaridad, numeroAsignatura);
+    return AsignaturaAprobada(A.escolaridad, numeroAsignatura);
 }

@@ -1,43 +1,73 @@
 #include "Escolaridad.h"
 
-// ============================================================
-// PLACEHOLDER - Escolaridad.cpp
-// ============================================================
-
-void CrearEscolaridad(Escolaridad &E)
+void Crear(Escolaridad &e)
 {
-    E.cantidad = 0;
+    Crear(e.cursos);
 }
 
-void AgregarCurso(Escolaridad &E, Curso c)
+Boolean EsVacia(Escolaridad e)
 {
-    E.cursos[E.cantidad] = c;
-    E.cantidad++;
+    return EsVacia(e.cursos);
 }
 
-int CantidadCursos(Escolaridad E)
+int Largo(Escolaridad e)
 {
-    return E.cantidad;
+    return Largo(e.cursos);
 }
 
-int CantidadCursosAprobados(Escolaridad E)
+void InsBack(Escolaridad &e, Curso c)
 {
-    int cant = 0;
-    for (int i = 0; i < E.cantidad; i++)
-        if (E.cursos[i].aprobado == TRUE)
+    InsBack(e.cursos, c);
+}
+
+Curso Ultimo(Escolaridad e)
+{
+    return Ultimo(e.cursos);
+}
+
+Curso KEsimo(Escolaridad e, int k)
+{
+    return KEsimo(e.cursos, k);
+}
+
+Boolean AsignaturaAprobada(Escolaridad e, int numAsignatura)
+{
+    Boolean encontrada = FALSE;
+    int i = 1;
+
+    while (i <= Largo(e.cursos) && !encontrada)
+    {
+        Curso c = KEsimo(e.cursos, i);
+        if (DarNumeroAsignaturaCurso(c) == numAsignatura &&
+            DarCalificacionCurso(c) >= NOTA_APROBACION)
+            encontrada = TRUE;
+        i++;
+    }
+    return encontrada;
+}
+
+int CantidadAprobados(Escolaridad e)
+{
+    int cant = 0, i;
+    int largo = Largo(e.cursos);
+    
+    for (i = 1; i <= largo; i++)
+    {
+        Curso c = KEsimo(e.cursos, i);
+        if (DarCalificacionCurso(c) >= NOTA_APROBACION)
             cant++;
+    }
     return cant;
 }
 
-Boolean TieneAsignaturaAprobada(Escolaridad E, int numeroAsignatura)
+int CantidadCursosEscolaridad(Escolaridad e)
 {
-    Boolean tiene = FALSE;
-    int i = 0;
-    while (i < E.cantidad && !tiene)
+    int cant = 0, i;
+    int largo = Largo(e.cursos);
+
+    for (i = 1; i <= largo; i++)
     {
-        if (E.cursos[i].numeroAsignatura == numeroAsignatura && E.cursos[i].aprobado == TRUE)
-            tiene = TRUE;
-        i++;
+        cant++;    
     }
-    return tiene;
+    return cant;
 }

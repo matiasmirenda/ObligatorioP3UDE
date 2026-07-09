@@ -1,3 +1,4 @@
+
 #include "String.h"
 
 void strcrear(String &s)
@@ -218,7 +219,7 @@ Boolean EsEntero(String s)
             i++;
         }
 
-        if (!(s[i] >= '0' && s[i] <= '9')) // debe haber al menos un dÃ­gito
+        if (!(s[i] >= '0' && s[i] <= '9')) // debe haber al menos un dígito
         {
             esEntero = FALSE;
         }

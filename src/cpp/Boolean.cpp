@@ -29,4 +29,4 @@ void Desplegar(Boolean b)
         printf("verdadero");
     else
         printf("falso");
-} 
+}

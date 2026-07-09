@@ -32,7 +32,7 @@ typedef struct {
 
 
 // El alumno queda inicializado con los datos personales indicados y con su escolaridad vacia.
-void CrearAlumno(Alumno &A, long int cedula, String nombre, String apellido, String telefono);
+void CargarAlumno(Alumno &A);
 
 // Retorna la cedula del alumno.
 long int DarCedula(Alumno A);

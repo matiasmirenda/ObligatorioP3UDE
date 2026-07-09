@@ -1,8 +1,8 @@
 #ifndef TESTALUMNO_H
 #define TESTALUMNO_H
 
-void TestCrearAlumno();
-void TestDarDatosAlumno();
+
+void TestCargayDarDatosAlumno();
 void TestAgregarCursoAlumno();
 void TestTieneAsignaturaAprobadaAlumno();
 
