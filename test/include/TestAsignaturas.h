@@ -1,5 +1,10 @@
-#ifndef TEST_ASIGNATURAS_H_INCLUDED
-#define TEST_ASIGNATURAS_H_INCLUDED
+#ifndef TESTASIGNATURAS_H
+#define TESTASIGNATURAS_H
+
+void TestCrearAsignaturas();
+void TestRegistrarPrimeraAsignatura();
+void TestRegistrarSegundaAsignatura();
+void TestObtenerAsignaturaRegistrada();
 
 void TestAsignaturas();
 

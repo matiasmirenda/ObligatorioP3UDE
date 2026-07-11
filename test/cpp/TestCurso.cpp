@@ -4,11 +4,15 @@
 #include <assert.h>
 #include <stdio.h>
 
-void TestCurso()
+void TestCargarCurso()
 {
-    Curso c;
+    Curso curso;
 
-    FILE *archivo = fopen("build/input_curso.txt", "w");
+    FILE *archivo =
+        fopen(
+            "build/input_curso.txt",
+            "w");
+
     assert(archivo != NULL);
 
     fprintf(archivo, "3\n");
@@ -19,21 +23,74 @@ void TestCurso()
 
     fclose(archivo);
 
-    FILE *entrada = freopen("build/input_curso.txt", "r", stdin);
+    FILE *entrada =
+        freopen(
+            "build/input_curso.txt",
+            "r",
+            stdin);
+
     assert(entrada != NULL);
 
-    CargarCurso(c);
+    CargarCurso(curso);
 
-    assert(DarNumeroAsignaturaCurso(c) == 3);
-    assert(DarCalificacionCurso(c) == 8);
-    assert(CursoAprobado(c) == TRUE);
+    assert(
+        DarNumeroAsignaturaCurso(curso) ==
+        3);
 
-    Fecha f = DarFechaFinalizacionCurso(c);
+    assert(
+        DarCalificacionCurso(curso) ==
+        8);
+}
 
-    assert(f.dia == 10);
-    assert(f.mes == 7);
-    assert(f.anio == 2026);
+void TestCursoAprobado()
+{
+    Curso curso =
+        {3, {10, 7, 2026}, 6};
 
-    c.calificacion = 5;
-    assert(CursoAprobado(c) == FALSE);
+    assert(
+        CursoAprobado(curso) ==
+        TRUE);
+
+    curso.calificacion = 12;
+
+    assert(
+        CursoAprobado(curso) ==
+        TRUE);
+}
+
+void TestCursoNoAprobado()
+{
+    Curso curso =
+        {3, {10, 7, 2026}, 5};
+
+    assert(
+        CursoAprobado(curso) ==
+        FALSE);
+
+    curso.calificacion = 0;
+
+    assert(
+        CursoAprobado(curso) ==
+        FALSE);
+}
+
+void TestDarFechaFinalizacionCurso()
+{
+    Curso curso =
+        {3, {10, 7, 2026}, 8};
+
+    Fecha fecha =
+        DarFechaFinalizacionCurso(curso);
+
+    assert(fecha.dia == 10);
+    assert(fecha.mes == 7);
+    assert(fecha.anio == 2026);
+}
+
+void TestCurso()
+{
+    TestCargarCurso();
+    TestCursoAprobado();
+    TestCursoNoAprobado();
+    TestDarFechaFinalizacionCurso();
 }

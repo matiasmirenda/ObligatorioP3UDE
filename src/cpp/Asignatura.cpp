@@ -25,6 +25,11 @@ String DarNombreAsignatura(Asignatura a)
     return a.nombre;
 }
 
+int DarNumeroAsignatura(Asignatura a)
+{
+    return a.numero;
+}
+
 int DarCantidadHorasAsignatura(Asignatura a)
 {
     return a.cantidadHoras;
@@ -33,4 +38,11 @@ int DarCantidadHorasAsignatura(Asignatura a)
 Boolean EsAsignaturaOptativa(Asignatura a)
 {
     return a.esOptativa;
+}
+
+void AsignarNumeroAsignatura(
+    Asignatura &a,
+    int numero)
+{
+    a.numero = numero;
 }

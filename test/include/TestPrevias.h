@@ -7,4 +7,6 @@ void TestEsPreviaDirecta();
 void TestPreviasInmediatasDe();
 void TestPreviasDe();
 
+void TestPrevias();
+
 #endif

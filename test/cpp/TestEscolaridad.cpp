@@ -1,130 +1,269 @@
-#include "Escolaridad.h"
+#include "../../src/include/Escolaridad.h"
+#include "../include/TestEscolaridad.h"
+
 #include <assert.h>
 
 void TestCrearEscolaridad()
 {
-    Escolaridad e;
+    Escolaridad escolaridad;
 
-    Crear(e);
+    Crear(escolaridad);
 
-    assert(EsVacia(e) == TRUE);
-    assert(Largo(e) == 0);
+    assert(
+        EsVacia(escolaridad) ==
+        TRUE);
+
+    assert(
+        Largo(escolaridad) ==
+        0);
 }
 
 void TestEsVaciaEscolaridad()
 {
-    Escolaridad e;
-    Crear(e);
+    Escolaridad escolaridad;
 
-    assert(EsVacia(e) == TRUE);
+    Crear(escolaridad);
 
-    Curso c = {101, {1, 7, 2026}, 8};
-    InsBack(e, c);
+    assert(
+        EsVacia(escolaridad) ==
+        TRUE);
 
-    assert(EsVacia(e) == FALSE);
+    Curso curso =
+        {1, {1, 7, 2026}, 8};
+
+    InsBack(
+        escolaridad,
+        curso);
+
+    assert(
+        EsVacia(escolaridad) ==
+        FALSE);
 }
 
 void TestLargoEscolaridad()
 {
-    Escolaridad e;
-    Crear(e);
+    Escolaridad escolaridad;
 
-    assert(Largo(e) == 0);
+    Crear(escolaridad);
 
-    InsBack(e, {101, {1, 7, 2026}, 8});
-    assert(Largo(e) == 1);
+    assert(
+        Largo(escolaridad) ==
+        0);
 
-    InsBack(e, {102, {2, 7, 2026}, 5});
-    assert(Largo(e) == 2);
+    InsBack(
+        escolaridad,
+        {1, {1, 7, 2026}, 8});
 
-    InsBack(e, {103, {3, 7, 2026}, 10});
-    assert(Largo(e) == 3);
+    assert(
+        Largo(escolaridad) ==
+        1);
+
+    InsBack(
+        escolaridad,
+        {2, {2, 7, 2026}, 5});
+
+    assert(
+        Largo(escolaridad) ==
+        2);
 }
 
 void TestInsBackEscolaridad()
 {
-    Escolaridad e;
-    Crear(e);
+    Escolaridad escolaridad;
 
-    Curso c1 = {101, {1, 7, 2026}, 8};
-    Curso c2 = {102, {2, 7, 2026}, 5};
+    Crear(escolaridad);
 
-    InsBack(e, c1);
+    Curso curso1 =
+        {1, {1, 7, 2026}, 8};
 
-    assert(Largo(e) == 1);
+    Curso curso2 =
+        {2, {2, 7, 2026}, 5};
 
-    InsBack(e, c2);
+    InsBack(
+        escolaridad,
+        curso1);
 
-    assert(Largo(e) == 2);
+    InsBack(
+        escolaridad,
+        curso2);
+
+    assert(
+        Largo(escolaridad) ==
+        2);
+
+    assert(
+        DarNumeroAsignaturaCurso(
+            KEsimo(escolaridad, 1)) == 1);
+
+    assert(
+        DarNumeroAsignaturaCurso(
+            KEsimo(escolaridad, 2)) == 2);
 }
 
 void TestUltimoEscolaridad()
 {
-    Escolaridad e;
-    Crear(e);
+    Escolaridad escolaridad;
 
-    Curso c1 = {101, {1, 7, 2026}, 8};
-    Curso c2 = {102, {2, 7, 2026}, 5};
+    Crear(escolaridad);
 
-    InsBack(e, c1);
-    InsBack(e, c2);
+    Curso curso1 =
+        {1, {1, 7, 2026}, 8};
 
-    Curso u = Ultimo(e);
+    Curso curso2 =
+        {2, {2, 7, 2026}, 5};
 
-    assert(DarNumeroAsignaturaCurso(u) == 102);
-    assert(DarCalificacionCurso(u) == 5);
+    InsBack(
+        escolaridad,
+        curso1);
+
+    InsBack(
+        escolaridad,
+        curso2);
+
+    Curso ultimo =
+        Ultimo(escolaridad);
+
+    assert(
+        DarNumeroAsignaturaCurso(
+            ultimo) == 2);
+
+    assert(
+        DarCalificacionCurso(
+            ultimo) == 5);
 }
 
 void TestKEsimoEscolaridad()
 {
-    Escolaridad e;
-    Crear(e);
+    Escolaridad escolaridad;
 
-    InsBack(e, {101, {1, 7, 2026}, 8});
-    InsBack(e, {102, {2, 7, 2026}, 5});
-    InsBack(e, {103, {3, 7, 2026}, 10});
+    Crear(escolaridad);
 
-    assert(DarNumeroAsignaturaCurso(KEsimo(e, 1)) == 101);
-    assert(DarNumeroAsignaturaCurso(KEsimo(e, 2)) == 102);
-    assert(DarNumeroAsignaturaCurso(KEsimo(e, 3)) == 103);
+    InsBack(
+        escolaridad,
+        {1, {1, 7, 2026}, 8});
+
+    InsBack(
+        escolaridad,
+        {2, {2, 7, 2026}, 5});
+
+    InsBack(
+        escolaridad,
+        {3, {3, 7, 2026}, 10});
+
+    assert(
+        DarNumeroAsignaturaCurso(
+            KEsimo(escolaridad, 1)) == 1);
+
+    assert(
+        DarNumeroAsignaturaCurso(
+            KEsimo(escolaridad, 2)) == 2);
+
+    assert(
+        DarNumeroAsignaturaCurso(
+            KEsimo(escolaridad, 3)) == 3);
 }
 
 void TestAsignaturaAprobadaEscolaridad()
 {
-    Escolaridad e;
-    Crear(e);
+    Escolaridad escolaridad;
 
-    InsBack(e, {101, {1, 7, 2026}, 5});  // Reprobada
-    InsBack(e, {102, {2, 7, 2026}, 6});  // Aprobada
-    InsBack(e, {103, {3, 7, 2026}, 10}); // Aprobada
+    Crear(escolaridad);
 
-    // Existe pero está reprobada
-    assert(AsignaturaAprobada(e, 101) == FALSE);
+    InsBack(
+        escolaridad,
+        {1, {1, 7, 2026}, 5});
 
-    // Existe y está aprobada
-    assert(AsignaturaAprobada(e, 102) == TRUE);
-    assert(AsignaturaAprobada(e, 103) == TRUE);
+    InsBack(
+        escolaridad,
+        {2, {2, 7, 2026}, 6});
 
-    // No existe
-    assert(AsignaturaAprobada(e, 999) == FALSE);
+    assert(
+        AsignaturaAprobada(
+            escolaridad,
+            1) == FALSE);
+
+    assert(
+        AsignaturaAprobada(
+            escolaridad,
+            2) == TRUE);
+
+    assert(
+        AsignaturaAprobada(
+            escolaridad,
+            10) == FALSE);
 }
 
 void TestCantidadAprobadosEscolaridad()
 {
-    Escolaridad e;
-    Crear(e);
+    Escolaridad escolaridad;
 
-    assert(CantidadAprobados(e) == 0);
+    Crear(escolaridad);
 
-    InsBack(e, {101, {1, 7, 2026}, 5});
-    assert(CantidadAprobados(e) == 0);
+    assert(
+        CantidadAprobados(
+            escolaridad) == 0);
 
-    InsBack(e, {102, {2, 7, 2026}, 6});
-    assert(CantidadAprobados(e) == 1);
+    InsBack(
+        escolaridad,
+        {1, {1, 7, 2026}, 5});
 
-    InsBack(e, {103, {3, 7, 2026}, 10});
-    assert(CantidadAprobados(e) == 2);
+    assert(
+        CantidadAprobados(
+            escolaridad) == 0);
 
-    InsBack(e, {104, {4, 7, 2026}, 1});
-    assert(CantidadAprobados(e) == 2);
+    InsBack(
+        escolaridad,
+        {2, {2, 7, 2026}, 6});
+
+    assert(
+        CantidadAprobados(
+            escolaridad) == 1);
+
+    InsBack(
+        escolaridad,
+        {3, {3, 7, 2026}, 10});
+
+    assert(
+        CantidadAprobados(
+            escolaridad) == 2);
+}
+
+void TestCantidadCursosEscolaridad()
+{
+    Escolaridad escolaridad;
+
+    Crear(escolaridad);
+
+    assert(
+        CantidadCursosEscolaridad(
+            escolaridad) == 0);
+
+    InsBack(
+        escolaridad,
+        {1, {1, 7, 2026}, 5});
+
+    assert(
+        CantidadCursosEscolaridad(
+            escolaridad) == 1);
+
+    InsBack(
+        escolaridad,
+        {2, {2, 7, 2026}, 8});
+
+    assert(
+        CantidadCursosEscolaridad(
+            escolaridad) == 2);
+}
+
+void TestEscolaridad()
+{
+    TestCrearEscolaridad();
+    TestEsVaciaEscolaridad();
+    TestLargoEscolaridad();
+    TestInsBackEscolaridad();
+    TestUltimoEscolaridad();
+    TestKEsimoEscolaridad();
+    TestAsignaturaAprobadaEscolaridad();
+    TestCantidadAprobadosEscolaridad();
+    TestCantidadCursosEscolaridad();
 }

@@ -1,0 +1,33 @@
+#ifndef ESTADOOPERACION_H
+#define ESTADOOPERACION_H
+
+typedef enum
+{
+    OK,
+
+    // Asignaturas
+    MAXIMO_ASIGNATURAS_ALCANZADO,
+    ASIGNATURA1_NO_EXISTE,
+    ASIGNATURA2_NO_EXISTE,
+
+    // Previaturas
+    PREVIATURA_GENERA_CICLO,
+    PREVIATURA_YA_EXISTE,
+    MISMA_ASIGNATURA,
+
+    // Alumnos
+    ALUMNO_YA_EXISTE,
+    ALUMNO_NO_EXISTE,
+
+    // Cursos
+    ASIGNATURA_YA_APROBADA,
+    PREVIAS_NO_APROBADAS,
+    FECHA_INVALIDA,
+    FECHA_ANTERIOR_ULTIMO_CURSO,
+    CALIFICACION_INVALIDA
+
+} EstadoOperacion;
+
+void MostrarEstadoOperacion(EstadoOperacion);
+
+#endif

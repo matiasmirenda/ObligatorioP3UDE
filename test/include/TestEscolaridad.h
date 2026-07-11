@@ -1,5 +1,5 @@
-#ifndef TEST_ESCOLARIDAD_H
-#define TEST_ESCOLARIDAD_H
+#ifndef TESTESCOLARIDAD_H
+#define TESTESCOLARIDAD_H
 
 void TestCrearEscolaridad();
 void TestEsVaciaEscolaridad();
@@ -9,5 +9,8 @@ void TestUltimoEscolaridad();
 void TestKEsimoEscolaridad();
 void TestAsignaturaAprobadaEscolaridad();
 void TestCantidadAprobadosEscolaridad();
+void TestCantidadCursosEscolaridad();
+
+void TestEscolaridad();
 
 #endif

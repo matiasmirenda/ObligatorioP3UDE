@@ -4,11 +4,15 @@
 #include <assert.h>
 #include <stdio.h>
 
-void TestAsignatura()
+void TestCargarAsignaturaNoOptativa()
 {
-    Asignatura a;
+    Asignatura asignatura;
 
-    FILE *archivo = fopen("build/input_asignatura.txt", "w");
+    FILE *archivo =
+        fopen(
+            "build/input_asignatura.txt",
+            "w");
+
     assert(archivo != NULL);
 
     fprintf(archivo, "Programacion III\n");
@@ -17,32 +21,85 @@ void TestAsignatura()
 
     fclose(archivo);
 
-    FILE *entrada = freopen("build/input_asignatura.txt", "r", stdin);
+    FILE *entrada =
+        freopen(
+            "build/input_asignatura.txt",
+            "r",
+            stdin);
+
     assert(entrada != NULL);
 
-    CargarAsignatura(a);
+    CargarAsignatura(asignatura);
 
-    assert(DarCantidadHorasAsignatura(a) == 96);
-    assert(EsAsignaturaOptativa(a) == FALSE);
-    assert(streq(DarNombreAsignatura(a), "Programacion III"));
+    assert(
+        streq(
+            DarNombreAsignatura(asignatura),
+            (char *)"Programacion III") == TRUE);
 
-    Asignatura b;
+    assert(
+        DarCantidadHorasAsignatura(asignatura) ==
+        96);
 
-    FILE *archivo2 = fopen("build/input_asignatura_2.txt", "w");
-    assert(archivo2 != NULL);
+    assert(
+        EsAsignaturaOptativa(asignatura) ==
+        FALSE);
+}
 
-    fprintf(archivo2, "Disenio Textil\n");
-    fprintf(archivo2, "80\n");
-    fprintf(archivo2, "1\n");
+void TestCargarAsignaturaOptativa()
+{
+    Asignatura asignatura;
 
-    fclose(archivo2);
+    FILE *archivo =
+        fopen(
+            "build/input_asignatura_2.txt",
+            "w");
 
-    FILE *entrada2 = freopen("build/input_asignatura_2.txt", "r", stdin);
-    assert(entrada2 != NULL);
+    assert(archivo != NULL);
 
-    CargarAsignatura(b);
+    fprintf(archivo, "Disenio Textil\n");
+    fprintf(archivo, "80\n");
+    fprintf(archivo, "1\n");
 
-    assert(streq(DarNombreAsignatura(b), "Disenio Textil"));
-    assert(DarCantidadHorasAsignatura(b) == 80);
-    assert(EsAsignaturaOptativa(b) == TRUE);
+    fclose(archivo);
+
+    FILE *entrada =
+        freopen(
+            "build/input_asignatura_2.txt",
+            "r",
+            stdin);
+
+    assert(entrada != NULL);
+
+    CargarAsignatura(asignatura);
+
+    assert(
+        streq(
+            DarNombreAsignatura(asignatura),
+            (char *)"Disenio Textil") == TRUE);
+
+    assert(
+        DarCantidadHorasAsignatura(asignatura) ==
+        80);
+
+    assert(
+        EsAsignaturaOptativa(asignatura) ==
+        TRUE);
+}
+
+void TestDarNumeroAsignatura()
+{
+    Asignatura asignatura;
+
+    asignatura.numero = 7;
+
+    assert(
+        DarNumeroAsignatura(
+            asignatura) == 7);
+}
+
+void TestAsignatura()
+{
+    TestCargarAsignaturaNoOptativa();
+    TestCargarAsignaturaOptativa();
+    TestDarNumeroAsignatura();
 }

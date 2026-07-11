@@ -120,3 +120,12 @@ void TestCantidadRegistradasMapeo()
     Insertar(m, a3);
     assert(CantidadRegistradas(m) == 3);
 }
+
+void TestMapeo()
+{
+    TestCrearMapeo();
+    TestInsertarMapeo();
+    TestPerteneceMapeo();
+    TestObtenerMapeo();
+    TestCantidadRegistradasMapeo();
+}

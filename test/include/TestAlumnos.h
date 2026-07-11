@@ -1,5 +1,10 @@
-#ifndef TEST_ALUMNOS_H_INCLUDED
-#define TEST_ALUMNOS_H_INCLUDED
+#ifndef TESTALUMNOS_H
+#define TESTALUMNOS_H
+
+void TestCrearAlumnos();
+void TestInscribirAlumno();
+void TestObtenerAlumno();
+void TestModificarAlumno();
 
 void TestAlumnos();
 
