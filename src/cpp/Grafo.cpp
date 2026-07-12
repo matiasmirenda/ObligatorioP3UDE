@@ -68,16 +68,19 @@ void PreviasInmediatas(Grafo G, int v, int pre[], int &cantPre){
 // Operacion auxiliar: recorrida DFS "hacia atras" (sobre el grafo
 // transpuesto) a partir de "actual", acumulando en previas[] todos
 // los vertices desde los que se puede llegar a "actual".
- void DFS_Previas(Grafo G, int actual, Boolean visitado[MAX_ASIGNATURAS],
-                        int previas[], int &cantPrevias)
+void DFS_Previas(Grafo G, int actual,
+                 Boolean visitado[MAX_ASIGNATURAS],
+                 int previas[], int &cantPrevias)
 {
+    visitado[actual] = TRUE;
+
     for (int w = 0; w < MAX_ASIGNATURAS; w++)
     {
         if (G[w][actual] && !visitado[w])
         {
-            visitado[w] = TRUE;
             previas[cantPrevias] = w;
             cantPrevias++;
+
             DFS_Previas(G, w, visitado, previas, cantPrevias);
         }
     }

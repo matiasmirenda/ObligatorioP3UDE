@@ -1,3 +1,16 @@
+# Ejecutables compilados
+*.exe
+*.out
+*.o
+*.obj
+
+# Carpeta de archivos temporales generados por los tests
 build/
-# macOS
-.DS_Store
+
+# Archivos de configuracion local de VSCode (si no querés compartir tu propia config)
+# Descomentar si tu equipo no versiona esto:
+# .vscode/
+
+# Otros temporales comunes de Windows/editor
+*.log
+*.tmp

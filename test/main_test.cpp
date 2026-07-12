@@ -10,7 +10,7 @@
 #include "include/TestMapeo.h"
 #include "include/TestLista.h"
 #include "include/TestEscolaridad.h"
-
+#include "include/TestAcademia.h"
 
 
 #include <cstdio>
@@ -69,6 +69,14 @@ int main()
     TestKEsimoEscolaridad();
     TestAsignaturaAprobadaEscolaridad();
     TestCantidadAprobadosEscolaridad();
+
+    TestInscribirAlumnoAcademia();
+    TestRegistrarCursoAcademia_AlumnoNoExiste();
+    TestRegistrarCursoAcademia_AsignaturaNoExiste();
+    TestRegistrarCursoAcademia_Exitoso();
+    TestRegistrarCursoAcademia_YaAprobada();
+    TestRegistrarCursoAcademia_PreviasNoAprobadas();
+    TestRegistrarCursoAcademia_FechaAnterior();
 
     printf("\n------------------------------------------");
     printf("\n   TODOS LOS TEST FINALIZARON CON EXITO");
