@@ -75,6 +75,14 @@ int main()
     TestMenu();
     printf("OK - Tests de Menu\n");
 
+    TestInscribirAlumnoAcademia();
+    TestRegistrarCursoAcademia_AlumnoNoExiste();
+    TestRegistrarCursoAcademia_AsignaturaNoExiste();
+    TestRegistrarCursoAcademia_Exitoso();
+    TestRegistrarCursoAcademia_YaAprobada();
+    TestRegistrarCursoAcademia_PreviasNoAprobadas();
+    TestRegistrarCursoAcademia_FechaAnterior();
+
     printf("\n------------------------------------------");
     printf("\n   TODOS LOS TEST FINALIZARON CON EXITO");
     printf("\n------------------------------------------\n");

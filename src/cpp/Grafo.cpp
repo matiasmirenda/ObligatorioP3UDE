@@ -81,6 +81,7 @@ void DFS_Previas(Grafo G, int actual, Boolean visitado[MAX_ASIGNATURAS],
         {
             previas[cantPrevias] = w;
             cantPrevias++;
+
             DFS_Previas(G, w, visitado, previas, cantPrevias);
         }
     }
