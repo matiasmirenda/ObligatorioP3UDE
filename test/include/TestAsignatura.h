@@ -1,5 +1,9 @@
-#ifndef TEST_ASIGNATURA_H_INCLUDED
-#define TEST_ASIGNATURA_H_INCLUDED
+#ifndef TESTASIGNATURA_H
+#define TESTASIGNATURA_H
+
+void TestCargarAsignaturaNoOptativa();
+void TestCargarAsignaturaOptativa();
+void TestDarNumeroAsignatura();
 
 void TestAsignatura();
 

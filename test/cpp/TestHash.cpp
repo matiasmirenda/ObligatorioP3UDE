@@ -3,89 +3,214 @@
 
 #include <assert.h>
 
-void TestHash()
+void TestCrearHash()
 {
     Hash hash;
-    Alumno a;
-    Alumno b;
-    Alumno aux;
 
     Crear(hash);
 
-    a.cedula = 12345678;
-    b.cedula = 87654321;
+    assert(
+        Pertenece(
+            hash,
+            12345678) == FALSE);
+}
 
-    // Al comenzar no hay alumnos
-    assert(Pertenece(hash, 12345678) == FALSE);
-    assert(Pertenece(hash, 87654321) == FALSE);
+void TestInsertarHash()
+{
+    Hash hash;
+    Alumno alumno;
 
-    // Insertar primero
-    Insertar(hash, a);
+    Crear(hash);
 
-    assert(Pertenece(hash, 12345678) == TRUE);
-    assert(Pertenece(hash, 87654321) == FALSE);
+    alumno.cedula = 12345678;
 
-    aux = Obtener(hash, 12345678);
-    assert(aux.cedula == 12345678);
+    Insertar(
+        hash,
+        alumno);
 
-    // Insertar segundo
-    Insertar(hash, b);
+    assert(
+        Pertenece(
+            hash,
+            12345678) == TRUE);
+}
 
-    assert(Pertenece(hash, 87654321) == TRUE);
+void TestObtenerHash()
+{
+    Hash hash;
+    Alumno alumno;
+    Alumno obtenido;
 
-    aux = Obtener(hash, 87654321);
-    assert(aux.cedula == 87654321);
+    Crear(hash);
 
-    // Eliminar primero
-    Eliminar(hash, 12345678);
+    alumno.cedula = 12345678;
 
-    assert(Pertenece(hash, 12345678) == FALSE);
-    assert(Pertenece(hash, 87654321) == TRUE);
+    Insertar(
+        hash,
+        alumno);
 
-    // Eliminar segundo
-    Eliminar(hash, 87654321);
+    obtenido =
+        Obtener(
+            hash,
+            12345678);
 
-    assert(Pertenece(hash, 87654321) == FALSE);
+    assert(
+        obtenido.cedula ==
+        12345678);
+}
 
-    // -----------------------------
-    // Eliminar un nodo que no es el primero
-    // -----------------------------
-    Alumno c, d, e;
+void TestEliminarPrimerNodoHash()
+{
+    Hash hash;
+    Alumno alumno;
 
-    c.cedula = 1;
-    d.cedula = 102;
-    e.cedula = 203;
+    Crear(hash);
 
-    Insertar(hash, c);
-    Insertar(hash, d);
-    Insertar(hash, e);
+    alumno.cedula = 12345678;
 
-    Eliminar(hash, 1);
+    Insertar(
+        hash,
+        alumno);
 
-    assert(Pertenece(hash, 1) == FALSE);
-    assert(Pertenece(hash, 102) == TRUE);
-    assert(Pertenece(hash, 203) == TRUE);
+    Eliminar(
+        hash,
+        12345678);
 
-    Eliminar(hash, 102);
-    Eliminar(hash, 203);
+    assert(
+        Pertenece(
+            hash,
+            12345678) == FALSE);
+}
 
-    assert(Pertenece(hash, 102) == FALSE);
-    assert(Pertenece(hash, 203) == FALSE);
+void TestEliminarNodoInternoHash()
+{
+    Hash hash;
+    Alumno primero;
+    Alumno segundo;
+    Alumno tercero;
 
-    // -----------------------------
-    // Clave negativa
-    // -----------------------------
-    Alumno f;
-    f.cedula = -50;
+    Crear(hash);
 
-    Insertar(hash, f);
+    primero.cedula = 1;
+    segundo.cedula = 102;
+    tercero.cedula = 203;
 
-    assert(Pertenece(hash, -50) == TRUE);
+    Insertar(
+        hash,
+        primero);
 
-    aux = Obtener(hash, -50);
-    assert(aux.cedula == -50);
+    Insertar(
+        hash,
+        segundo);
 
-    Eliminar(hash, -50);
+    Insertar(
+        hash,
+        tercero);
 
-    assert(Pertenece(hash, -50) == FALSE);
+    Eliminar(
+        hash,
+        102);
+
+    assert(
+        Pertenece(
+            hash,
+            102) == FALSE);
+
+    assert(
+        Pertenece(
+            hash,
+            1) == TRUE);
+
+    assert(
+        Pertenece(
+            hash,
+            203) == TRUE);
+}
+
+void TestColisionesHash()
+{
+    Hash hash;
+    Alumno primero;
+    Alumno segundo;
+    Alumno tercero;
+
+    Crear(hash);
+
+    primero.cedula = 1;
+    segundo.cedula = 102;
+    tercero.cedula = 203;
+
+    Insertar(
+        hash,
+        primero);
+
+    Insertar(
+        hash,
+        segundo);
+
+    Insertar(
+        hash,
+        tercero);
+
+    assert(
+        Obtener(
+            hash,
+            1)
+            .cedula == 1);
+
+    assert(
+        Obtener(
+            hash,
+            102)
+            .cedula == 102);
+
+    assert(
+        Obtener(
+            hash,
+            203)
+            .cedula == 203);
+}
+
+void TestClaveNegativaHash()
+{
+    Hash hash;
+    Alumno alumno;
+
+    Crear(hash);
+
+    alumno.cedula = -50;
+
+    Insertar(
+        hash,
+        alumno);
+
+    assert(
+        Pertenece(
+            hash,
+            -50) == TRUE);
+
+    assert(
+        Obtener(
+            hash,
+            -50)
+            .cedula == -50);
+
+    Eliminar(
+        hash,
+        -50);
+
+    assert(
+        Pertenece(
+            hash,
+            -50) == FALSE);
+}
+
+void TestHash()
+{
+    TestCrearHash();
+    TestInsertarHash();
+    TestObtenerHash();
+    TestEliminarPrimerNodoHash();
+    TestEliminarNodoInternoHash();
+    TestColisionesHash();
+    TestClaveNegativaHash();
 }

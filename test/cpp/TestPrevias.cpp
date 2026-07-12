@@ -88,3 +88,12 @@ void TestPreviasDe()
     assert(ContieneValor(previas, cantPrevias, 0) == TRUE);
     assert(ContieneValor(previas, cantPrevias, 1) == TRUE);
 }
+
+void TestPrevias()
+{
+    TestCrearPreviaturas();
+    TestAgregarPrevia();
+    TestEsPreviaDirecta();
+    TestPreviasInmediatasDe();
+    TestPreviasDe();
+}

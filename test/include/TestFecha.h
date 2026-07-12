@@ -5,4 +5,6 @@ void TestEsMismaFecha();
 void TestEsFechaMayor();
 void TestEsFechaValida();
 
+void TestFecha();
+
 #endif

@@ -8,4 +8,6 @@ void TestInsBack();
 void TestUltimo();
 void TestKEsimo();
 
+void TestLista();
+
 #endif

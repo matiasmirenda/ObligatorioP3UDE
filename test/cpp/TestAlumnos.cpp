@@ -1,29 +1,117 @@
+
 #include "../../src/include/Alumnos.h"
 #include "../include/TestAlumnos.h"
 
 #include <assert.h>
 
-void TestAlumnos()
+void TestCrearAlumnos()
 {
     Alumnos alumnos;
-    Alumno a;
+
+    CrearAlumnos(alumnos);
+
+    assert(
+        ExisteAlumno(
+            alumnos,
+            12345678) == FALSE);
+}
+
+void TestInscribirAlumno()
+{
+    Alumnos alumnos;
+    Alumno alumno;
+
+    CrearAlumnos(alumnos);
+
+    alumno.cedula = 12345678;
+
+    InscribirAlumno(
+        alumnos,
+        alumno);
+
+    assert(
+        ExisteAlumno(
+            alumnos,
+            12345678) == TRUE);
+}
+
+void TestObtenerAlumno()
+{
+    Alumnos alumnos;
+    Alumno alumno;
     Alumno obtenido;
 
     CrearAlumnos(alumnos);
 
-    a.cedula = 12345678;
+    alumno.cedula = 12345678;
 
-    assert(ExisteAlumno(alumnos, 12345678) == FALSE);
+    InscribirAlumno(
+        alumnos,
+        alumno);
 
-    InscribirAlumno(alumnos, a);
+    obtenido =
+        ObtenerAlumno(
+            alumnos,
+            12345678);
 
-    assert(ExisteAlumno(alumnos, 12345678) == TRUE);
+    assert(
+        obtenido.cedula ==
+        12345678);
+}
 
-    obtenido = ObtenerAlumno(alumnos, 12345678);
+void TestModificarAlumno()
+{
+    Alumnos alumnos;
+    Alumno alumno;
+    Alumno modificado;
+    Alumno obtenido;
 
-    assert(obtenido.cedula == 12345678);
+    CrearAlumnos(alumnos);
 
-    ModificarAlumno(alumnos, obtenido);
+    alumno.cedula = 12345678;
 
-    assert(ExisteAlumno(alumnos, 12345678) == TRUE);
+    strcrear(alumno.nombre);
+    strcop(
+        alumno.nombre,
+        (char *)"Juan");
+
+    InscribirAlumno(
+        alumnos,
+        alumno);
+
+    modificado =
+        ObtenerAlumno(
+            alumnos,
+            12345678);
+
+    strcop(
+        modificado.nombre,
+        (char *)"Pedro");
+
+    ModificarAlumno(
+        alumnos,
+        modificado);
+
+    obtenido =
+        ObtenerAlumno(
+            alumnos,
+            12345678);
+
+    assert(
+        ExisteAlumno(
+            alumnos,
+            12345678) == TRUE);
+
+    assert(
+        streq(
+            obtenido.nombre,
+            (char *)"Pedro") == TRUE);
+}
+
+void TestAlumnos()
+{
+    TestCrearAlumnos();
+    TestInscribirAlumno();
+    TestObtenerAlumno();
+    TestModificarAlumno();
 }
