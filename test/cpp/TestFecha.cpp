@@ -43,3 +43,10 @@ void TestEsFechaValida()
     assert(EsFechaValida({29, 2, 2025}) == FALSE);
     assert(EsFechaValida({30, 2, 2024}) == FALSE);
 }
+
+void TestFecha()
+{
+    TestEsMismaFecha();
+    TestEsFechaValida();
+    TestEsFechaMayor();
+}

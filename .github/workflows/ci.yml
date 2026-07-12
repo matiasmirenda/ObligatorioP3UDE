@@ -49,14 +49,14 @@ jobs:
 
           lcov --list build/coverage.filtered.info
 
-      - name: Verify 10% coverage
+      - name: Verify 94% coverage
         run: |
           COVERAGE=$(lcov --summary build/coverage.filtered.info | awk '/lines/ {gsub("%","",$2); print $2}')
 
           echo "Line coverage: ${COVERAGE}%"
 
           if (( $(echo "$COVERAGE < 10" | bc -l) )); then
-            echo "❌ Coverage must be 10%."
+            echo "❌ Coverage must be more than 94%."
             exit 1
           fi
 

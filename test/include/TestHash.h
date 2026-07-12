@@ -1,5 +1,13 @@
-#ifndef TEST_HASH_H_INCLUDED
-#define TEST_HASH_H_INCLUDED
+#ifndef TESTHASH_H
+#define TESTHASH_H
+
+void TestCrearHash();
+void TestInsertarHash();
+void TestObtenerHash();
+void TestEliminarPrimerNodoHash();
+void TestEliminarNodoInternoHash();
+void TestColisionesHash();
+void TestClaveNegativaHash();
 
 void TestHash();
 

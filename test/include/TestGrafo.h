@@ -7,4 +7,6 @@ void TestExisteCamino();
 void TestPreviasInmediatas();
 void TestTodasLasPrevias();
 
+void TestGrafo();
+
 #endif

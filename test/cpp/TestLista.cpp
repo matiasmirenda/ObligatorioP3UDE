@@ -105,3 +105,13 @@ void TestKEsimo()
     assert(DarCalificacionCurso(KEsimo(l, 2)) == DarCalificacionCurso(c2));
     assert(DarCalificacionCurso(KEsimo(l, 3)) == DarCalificacionCurso(c3));
 }
+
+void TestLista()
+{
+    TestCrear();
+    TestEsVacia();
+    TestLargo();
+    TestInsBack();
+    TestUltimo();
+    TestKEsimo();
+}

@@ -7,4 +7,6 @@ void TestPerteneceMapeo();
 void TestObtenerMapeo();
 void TestCantidadRegistradasMapeo();
 
+void TestMapeo();
+
 #endif

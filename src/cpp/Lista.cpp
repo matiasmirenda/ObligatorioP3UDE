@@ -9,7 +9,7 @@ void Crear(Lista &l)
 Boolean EsVacia(Lista l)
 {
     Boolean vacia = FALSE;
-    if (l.prim == NULL)
+    if (l.prim == NULL && l.ult == NULL)
     {
         vacia = TRUE;
     }
@@ -21,16 +21,11 @@ int Largo(Lista l)
 
     int cont = 0;
 
-    if (l.prim != NULL)
+    NodoLista *aux = l.prim;
+    while (aux != NULL)
     {
-        cont = 1;
-        NodoLista *aux = l.prim;
-
-        while (aux != l.ult)
-        {
-            aux = aux->sig;
-            cont++;
-        }
+        aux = aux->sig;
+        cont++;
     }
 
     return cont;

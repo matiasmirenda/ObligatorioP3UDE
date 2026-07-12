@@ -91,3 +91,12 @@ void TestTodasLasPrevias()
     assert(ContieneValor(previas, cantPrevias, 1) == TRUE);
     assert(ContieneValor(previas, cantPrevias, 2) == TRUE);
 }
+
+void TestGrafo()
+{
+    TestCrearGrafo();
+    TestAgregarArista();
+    TestExisteCamino();
+    TestPreviasInmediatas();
+    TestTodasLasPrevias();
+}

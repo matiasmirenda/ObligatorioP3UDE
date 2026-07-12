@@ -1,23 +1,19 @@
+
 #include "../../src/include/Alumno.h"
-#include "../../src/include/String.h"
-#include "../../src/include/Boolean.h"
 #include "../include/TestAlumno.h"
 
-#include <cassert>
-#include <cstdio>
+#include <assert.h>
+#include <stdio.h>
 
-
-
-
-
-void TestCargayDarDatosAlumno()
+void TestCargarAlumno()
 {
-    Alumno A;
+    Alumno alumno;
 
-    FILE *archivo = fopen("build/input_alumno.txt", "w");
+    FILE *archivo =
+        fopen("build/input_alumno.txt", "w");
+
     assert(archivo != NULL);
 
-    
     fprintf(archivo, "Carolina\n");
     fprintf(archivo, "Perez\n");
     fprintf(archivo, "099123456\n");
@@ -25,110 +21,222 @@ void TestCargayDarDatosAlumno()
 
     fclose(archivo);
 
-    FILE *entrada = freopen("build/input_alumno.txt", "r", stdin);
+    FILE *entrada =
+        freopen(
+            "build/input_alumno.txt",
+            "r",
+            stdin);
+
     assert(entrada != NULL);
 
-    CargarAlumno(A);
-    long int ci = 12345678;
-    printf("cedula %ld\n", DarCedula(A));
-    assert(DarCedula(A) == ci);
-    assert(CantidadCursosAlumno(A) == 0);
-    assert(CantidadCursosAprobadosAlumno(A) == 0);
+    CargarAlumno(alumno);
 
-    String nombreObtenido, apellidoObtenido, telefonoObtenido;
-    strcrear(nombreObtenido);
-    strcrear(apellidoObtenido);
-    strcrear(telefonoObtenido);
+    assert(DarCedula(alumno) == 12345678);
+    assert(CantidadCursosAlumno(alumno) == 0);
+    assert(CantidadCursosAprobadosAlumno(alumno) == 0);
+}
 
-    DarNombre(A, nombreObtenido);
-    DarApellido(A, apellidoObtenido);
-    DarTelefono(A, telefonoObtenido);
+void TestDarDatosAlumno()
+{
+    Alumno alumno;
 
-    assert(streq(nombreObtenido, (char *)"Carolina") == TRUE);
-    assert(streq(apellidoObtenido, (char *)"Perez") == TRUE);
-    assert(streq(telefonoObtenido, (char *)"099123456") == TRUE);
+    strcrear(alumno.nombre);
+    strcop(
+        alumno.nombre,
+        (char *)"Carolina");
 
-    strdestruir(nombreObtenido);
-    strdestruir(apellidoObtenido);
-    strdestruir(telefonoObtenido);
+    strcrear(alumno.apellido);
+    strcop(
+        alumno.apellido,
+        (char *)"Perez");
 
-    Alumno B;
+    strcrear(alumno.telefono);
+    strcop(
+        alumno.telefono,
+        (char *)"099123456");
 
-    FILE *archivo2 = fopen("build/input_alumno_2.txt", "w");
-    assert(archivo2 != NULL);
+    alumno.cedula = 12345678;
 
-   
-    fprintf(archivo2, "Matias\n");
-    fprintf(archivo2, "Mirenda\n");
-    fprintf(archivo2, "098765432\n");
-     fprintf(archivo2, "87654321\n");
+    Crear(alumno.escolaridad);
 
-    fclose(archivo2);
+    String nombre;
+    String apellido;
+    String telefono;
 
-    FILE *entrada2 = freopen("build/input_alumno_2.txt", "r", stdin);
-    assert(entrada2 != NULL);
+    strcrear(nombre);
+    strcrear(apellido);
+    strcrear(telefono);
 
-    CargarAlumno(B);
+    DarNombre(alumno, nombre);
+    DarApellido(alumno, apellido);
+    DarTelefono(alumno, telefono);
 
-    assert(DarCedula(B) == 87654321);
+    assert(
+        streq(
+            nombre,
+            (char *)"Carolina") == TRUE);
 
-    String nombreObtenido2;
-    strcrear(nombreObtenido2);
-    DarNombre(B, nombreObtenido2);
-    assert(streq(nombreObtenido2, (char *)"Matias") == TRUE);
-    strdestruir(nombreObtenido2);
+    assert(
+        streq(
+            apellido,
+            (char *)"Perez") == TRUE);
+
+    assert(
+        streq(
+            telefono,
+            (char *)"099123456") == TRUE);
+
+    strdestruir(nombre);
+    strdestruir(apellido);
+    strdestruir(telefono);
+}
+
+void TestAlumnoSinCursos()
+{
+    Alumno alumno;
+
+    alumno.cedula = 12345678;
+
+    Crear(alumno.escolaridad);
+
+    assert(
+        CantidadCursosAlumno(alumno) ==
+        0);
+
+    assert(
+        CantidadCursosAprobadosAlumno(alumno) ==
+        0);
 }
 
 void TestAgregarCursoAlumno()
 {
-    Alumno A;
-    String nombre = (char *)"Juan";
-    String apellido = (char *)"Gomez";
-    String telefono = (char *)"091111111";
-    Crear(A.escolaridad);  
+    Alumno alumno;
+    Curso curso;
 
-    A.nombre = nombre;
-    A.apellido = apellido;
-    A.telefono = telefono;
+    alumno.cedula = 12345678;
 
-    Curso c;
-    c.numeroAsignatura = 1;
-    c.fechaFinalizacion = {2023, 5, 15};
-    c.calificacion = 8;
+    Crear(alumno.escolaridad);
 
-    AgregarCursoAlumno(A, c);
+    curso.numeroAsignatura = 1;
+    curso.fechaFinalizacion = {15, 5, 2023};
+    curso.calificacion = 8;
 
-    assert(CantidadCursosAlumno(A) == 1);
-    assert(CantidadCursosAprobadosAlumno(A) == 1);
+    AgregarCursoAlumno(
+        alumno,
+        curso);
+
+    assert(
+        CantidadCursosAlumno(alumno) ==
+        1);
+}
+
+void TestCantidadCursosAlumno()
+{
+    Alumno alumno;
+
+    alumno.cedula = 12345678;
+
+    Crear(alumno.escolaridad);
+
+    Curso curso1 =
+        {1, {15, 5, 2023}, 8};
+
+    Curso curso2 =
+        {2, {20, 6, 2023}, 4};
+
+    assert(
+        CantidadCursosAlumno(alumno) ==
+        0);
+
+    AgregarCursoAlumno(
+        alumno,
+        curso1);
+
+    assert(
+        CantidadCursosAlumno(alumno) ==
+        1);
+
+    AgregarCursoAlumno(
+        alumno,
+        curso2);
+
+    assert(
+        CantidadCursosAlumno(alumno) ==
+        2);
+}
+
+void TestCantidadCursosAprobadosAlumno()
+{
+    Alumno alumno;
+
+    alumno.cedula = 12345678;
+
+    Crear(alumno.escolaridad);
+
+    Curso aprobado =
+        {1, {15, 5, 2023}, 8};
+
+    Curso noAprobado =
+        {2, {20, 6, 2023}, 4};
+
+    AgregarCursoAlumno(
+        alumno,
+        aprobado);
+
+    AgregarCursoAlumno(
+        alumno,
+        noAprobado);
+
+    assert(
+        CantidadCursosAprobadosAlumno(alumno) ==
+        1);
 }
 
 void TestTieneAsignaturaAprobadaAlumno()
 {
-    Alumno A;
-    String nombre = (char *)"Ana";
-    String apellido = (char *)"Lopez";
-    String telefono = (char *)"092222222";
-    A.nombre = nombre;
-    A.apellido = apellido;
-    A.telefono = telefono;
-    Crear(A.escolaridad);  
+    Alumno alumno;
 
-    Curso aprobado;
-    aprobado.numeroAsignatura = 5;
-    aprobado.fechaFinalizacion = {2023, 5, 15};
-    aprobado.calificacion = 9;
+    alumno.cedula = 12345678;
 
-    Curso noAprobado;
-    noAprobado.numeroAsignatura = 6;
-    noAprobado.fechaFinalizacion = {2023, 5, 15};
-    noAprobado.calificacion = 2;
+    Crear(alumno.escolaridad);
 
-    AgregarCursoAlumno(A, aprobado);
-    AgregarCursoAlumno(A, noAprobado);
+    Curso aprobado =
+        {5, {15, 5, 2023}, 9};
 
-    assert(TieneAsignaturaAprobadaAlumno(A, 5) == TRUE);
-    assert(TieneAsignaturaAprobadaAlumno(A, 6) == FALSE);
-    printf("cantidad cursos %d\n", CantidadCursosAlumno(A));
-    assert(CantidadCursosAlumno(A) == 2);
-    assert(CantidadCursosAprobadosAlumno(A) == 1);
+    Curso noAprobado =
+        {6, {20, 6, 2023}, 2};
+
+    AgregarCursoAlumno(
+        alumno,
+        aprobado);
+
+    AgregarCursoAlumno(
+        alumno,
+        noAprobado);
+
+    assert(
+        TieneAsignaturaAprobadaAlumno(
+            alumno,
+            5) == TRUE);
+
+    assert(
+        TieneAsignaturaAprobadaAlumno(
+            alumno,
+            6) == FALSE);
+
+    assert(
+        TieneAsignaturaAprobadaAlumno(
+            alumno,
+            10) == FALSE);
+}
+
+void TestAlumno()
+{
+    TestCargarAlumno();
+    TestDarDatosAlumno();
+    TestAlumnoSinCursos();
+    TestAgregarCursoAlumno();
+    TestCantidadCursosAlumno();
+    TestCantidadCursosAprobadosAlumno();
+    TestTieneAsignaturaAprobadaAlumno();
 }
