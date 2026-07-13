@@ -79,7 +79,7 @@ void MostrarAlumnoEspecifico(Alumno a)
     print(a.telefono);
 }
 
-void MostrarEscolaridadEspecifica(Alumno a)
+void MostrarEscolaridadEspecifica(Alumno a, Asignaturas asignaturas)
 {
-    MostrarEscolaridad(a.escolaridad);
+    MostrarEscolaridad(a.escolaridad, asignaturas);
 }

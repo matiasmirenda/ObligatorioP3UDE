@@ -1,4 +1,4 @@
-#include "../include/Asignaturas.h"
+#include "Asignaturas.h"
 
 void CrearAsignaturas(Asignaturas &asignaturas)
 {

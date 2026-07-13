@@ -1,4 +1,4 @@
-#include "../include/Fecha.h"
+#include "Fecha.h"
 #include <stdio.h>
 
 void CargarFecha(Fecha &f)

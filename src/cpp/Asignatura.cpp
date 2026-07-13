@@ -1,4 +1,4 @@
-#include "../include/Asignatura.h"
+#include "Asignatura.h"
 
 void CargarAsignatura(Asignatura &a)
 {

@@ -2,6 +2,7 @@
 #define CURSO_H_INCLUDED
 
 #include "Fecha.h"
+#include "Asignaturas.h"
 
 typedef struct
 {
@@ -27,6 +28,6 @@ Boolean CursoAprobado(Curso c);
 
 // Muestra un curso por pantalla
 // Precondición: el curso existe
-void MostrarCurso(Curso c);
+void MostrarCurso(Curso c, Asignaturas asignaturas);
 
 #endif

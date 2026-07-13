@@ -29,6 +29,6 @@ void MostrarAlumno(Alumnos alumnos, long int cedula);
 
 // Muestra la escolaridad de un alumno especifico
 // Precondición: el alumno existe
-void MostrarEscolaridadAlumno(Alumnos alumnos, long int cedula);
+void MostrarEscolaridadAlumno(Alumnos alumnos, Asignaturas asignaturas, long int cedula);
 
 #endif

@@ -53,6 +53,6 @@ void MostrarAlumnoEspecifico(Alumno a);
 
 // Muestra la escolaridad de un alumno por pan
 // Precondición: el alumno existe
-void MostrarEscolaridadEspecifica(Alumno a);
+void MostrarEscolaridadEspecifica(Alumno a, Asignaturas asignaturas);
 
 #endif

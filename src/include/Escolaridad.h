@@ -43,6 +43,6 @@ int CantidadAprobados(Escolaridad e);
 int CantidadCursosEscolaridad(Escolaridad e);
 
 // Muestra una escolaridad por pantalla
-void MostrarEscolaridad(Escolaridad e);
+void MostrarEscolaridad(Escolaridad e, Asignaturas asignaturas);
 
 #endif

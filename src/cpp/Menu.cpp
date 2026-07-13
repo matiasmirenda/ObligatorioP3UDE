@@ -60,20 +60,24 @@ void OpcionRegistrarPreviatura(Academia &academia)
     MostrarEstadoOperacion(estado);
 }
 
-void OpcionInscribirAlumno(Academia academia)
+void OpcionInscribirAlumno(Academia &academia)
 {
     printf("\n--- Inscribir alumno ---\n");
-    InscribirAlumnoAcademia(academia);
+    EstadoOperacion estado = InscribirAlumnoAcademia(academia);
+
+    MostrarEstadoOperacion(estado);
 }
 
-void OpcionRegistrarCursoEscolaridad(Academia academia)
+void OpcionRegistrarCursoEscolaridad(Academia &academia)
 {
     printf("\n--- Registrar curso ---\n");
 
     long int ci;
     printf("Documento del alumno: ");
     scanf("%ld", &ci);
-    RegistrarCursoAcademia(academia, ci);
+
+    EstadoOperacion estado = RegistrarCursoAcademia(academia, ci);
+    MostrarEstadoOperacion(estado);
 }
 
 void OpcionListarAsignaturas(Academia academia)

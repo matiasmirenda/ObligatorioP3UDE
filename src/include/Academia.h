@@ -28,13 +28,13 @@ EstadoOperacion RegistrarPreviatura(
     int numeroAsignatura);
 
 // Inscribe un alumno en la academia
-void InscribirAlumnoAcademia(Academia &A);
+EstadoOperacion InscribirAlumnoAcademia(Academia &A);
 
 // Devuelve TRUE si el alumno indicado tiene aprobadas todas las previas de la asignatura indicada
 Boolean TienePreviasInmediatasAprobadas(Academia &A, Alumno alumno, int numeroAsignatura);
 
 // Registra un curso en la escolaridad de un alumno
-void RegistrarCursoAcademia(Academia &A, long int cedula);
+EstadoOperacion RegistrarCursoAcademia(Academia &A, long int cedula);
 
 // Lista por pantalla todas las asignaturas registradas en la academia, ordenadas por número de asignatura
 void ListarAsignaturasAcademia(

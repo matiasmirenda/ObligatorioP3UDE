@@ -62,24 +62,17 @@ int CantidadAprobados(Escolaridad e)
 
 int CantidadCursosEscolaridad(Escolaridad e)
 {
-    int cant = 0, i;
-    int largo = Largo(e.cursos);
-
-    for (i = 1; i <= largo; i++)
-    {
-        cant++;
-    }
-    return cant;
+    return Largo(e.cursos);
 }
 
-void MostrarEscolaridad(Escolaridad e)
+void MostrarEscolaridad(Escolaridad e, Asignaturas asignaturas)
 {
     int k, largo = CantidadCursosEscolaridad(e);
     printf("\nESCOLARIDAD DEL ALUMNO");
     printf("\n-------------------------");
 
-    for (k = 0; k < largo; k++)
+    for (k = 1; k <= largo; k++)
     {
-        MostrarCurso(KEsimo(e, k));
+        MostrarCurso(KEsimo(e, k), asignaturas);
     }
 }
