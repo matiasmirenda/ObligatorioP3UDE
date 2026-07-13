@@ -22,14 +22,14 @@
 // Escolaridad.h, sin acceder a su representacion interna.
 // ============================================================
 
-typedef struct {
+typedef struct
+{
     long int cedula;
     String nombre;
     String apellido;
     String telefono;
     Escolaridad escolaridad;
 } Alumno;
-
 
 // El alumno queda inicializado con los datos personales indicados y con su escolaridad vacia.
 void CargarAlumno(Alumno &A);
@@ -65,5 +65,8 @@ int CantidadCursosAprobadosAlumno(Alumno A);
 
 // Retorna true si A tiene aprobada la asignatura numeroAsignatura.
 Boolean TieneAsignaturaAprobadaAlumno(Alumno A, int numeroAsignatura);
+
+// Muestra un alumno por pantalla
+void MostrarAlumnoEspecifico(Alumno a);
 
 #endif

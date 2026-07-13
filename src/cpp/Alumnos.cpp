@@ -25,3 +25,15 @@ void ModificarAlumno(Alumnos &alumnos, Alumno a)
     Eliminar(alumnos, a.cedula);
     Insertar(alumnos, a);
 }
+
+void MostrarAlumno(Alumnos alumnos, long int cedula)
+{
+    if (ExisteAlumno(alumnos, cedula) == FALSE)
+    {
+        printf("No existe una alumno con el documento ingresado");
+    }
+    else
+    {
+        MostrarAlumnoEspecifico(ObtenerAlumno(alumnos, cedula));
+    }
+}

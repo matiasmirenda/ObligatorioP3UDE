@@ -9,12 +9,12 @@ void MostrarMenu()
     printf("=====================================\n");
     printf("          ACADEMIA DE MODA\n");
     printf("=====================================\n");
-    printf("1. Registrar una nueva asignatura\n"); // OK
-    printf("2. Agregar una previatura\n");         // OK
+    printf("1. Registrar una nueva asignatura\n");
+    printf("2. Agregar una previatura\n");
     printf("3. Inscribir un nuevo alumno\n");
     printf("4. Registrar un curso\n");
-    printf("5. Listar todas las asignaturas\n");     // OK
-    printf("6. Listar previas de una asignatura\n"); // OK
+    printf("5. Listar todas las asignaturas\n");
+    printf("6. Listar previas de una asignatura\n");
     printf("7. Mostrar datos de un alumno\n");
     printf("8. Mostrar escolaridad de un alumno\n");
     printf("0. Salir\n");
@@ -22,7 +22,7 @@ void MostrarMenu()
     printf("Ingrese una opcion: ");
 }
 
-void OpcionRegistrarAsignatura(Academia &academia) // Op. 1
+void OpcionRegistrarAsignatura(Academia &academia)
 {
     Asignatura asignatura;
 
@@ -38,7 +38,7 @@ void OpcionRegistrarAsignatura(Academia &academia) // Op. 1
     MostrarEstadoOperacion(estado);
 }
 
-void OpcionRegistrarPreviatura(Academia &academia) // Op. 2
+void OpcionRegistrarPreviatura(Academia &academia)
 {
     int numeroPrevia;
     int numeroAsignatura;
@@ -60,13 +60,13 @@ void OpcionRegistrarPreviatura(Academia &academia) // Op. 2
     MostrarEstadoOperacion(estado);
 }
 
-void OpcionListarAsignaturas(Academia academia) // Op. 5
+void OpcionListarAsignaturas(Academia academia)
 {
     printf("\n--- Listar asignaturas ---\n");
     ListarAsignaturas(academia.asignaturas);
 }
 
-void OpcionListarPrevias(Academia academia) // Op. 6
+void OpcionListarPrevias(Academia academia)
 {
     int numeroAsignatura;
 
@@ -78,6 +78,17 @@ void OpcionListarPrevias(Academia academia) // Op. 6
     ListarPreviasAcademia(
         academia,
         numeroAsignatura);
+}
+
+void OpcionMostrarAlumno(Academia academia)
+{
+    long int ci;
+    printf("\n--- Listar alumno ---\n");
+
+    printf("Documento del alumno a listar: ");
+    scanf("%ld", &ci);
+
+    MostrarAlumno(academia.alumnos, ci);
 }
 
 void EjecutarMenu(Academia &academia)
@@ -108,7 +119,7 @@ void EjecutarMenu(Academia &academia)
             break;
 
         case 5:
-            // TODO
+            OpcionListarAsignaturas(academia);
             break;
 
         case 6:
@@ -116,11 +127,11 @@ void EjecutarMenu(Academia &academia)
             break;
 
         case 7:
-            // TODO
+            OpcionMostrarAlumno(academia);
             break;
 
         case 8:
-            // TODO
+            // JOHA
             break;
 
         case 0:

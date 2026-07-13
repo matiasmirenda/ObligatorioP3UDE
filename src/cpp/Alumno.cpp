@@ -1,7 +1,6 @@
 #include "Alumno.h"
 #include "String.h"
 
-
 void CargarAlumno(Alumno &A)
 {
     printf("Nombre: ");
@@ -15,42 +14,64 @@ void CargarAlumno(Alumno &A)
     printf("Telefono: ");
     strcrear(A.telefono);
     scan(A.telefono);
-   
+
     printf("Cedula: ");
     scanf("%ld", &A.cedula);
 
     Crear(A.escolaridad);
 }
-long int DarCedula(Alumno A) { 
-    return A.cedula; 
+long int DarCedula(Alumno A)
+{
+    return A.cedula;
 }
 
-void DarNombre(Alumno A, String &nombre) { 
-    strcop(nombre, A.nombre); 
+void DarNombre(Alumno A, String &nombre)
+{
+    strcop(nombre, A.nombre);
 }
-void DarApellido(Alumno A, String &apellido) { 
-    strcop(apellido, A.apellido); 
+void DarApellido(Alumno A, String &apellido)
+{
+    strcop(apellido, A.apellido);
 }
-void DarTelefono(Alumno A, String &telefono) { 
-    strcop(telefono, A.telefono); 
+void DarTelefono(Alumno A, String &telefono)
+{
+    strcop(telefono, A.telefono);
 }
 
-Escolaridad DarEscolaridad(Alumno A) {
-     return A.escolaridad; 
+Escolaridad DarEscolaridad(Alumno A)
+{
+    return A.escolaridad;
 }
 
-void AgregarCursoAlumno(Alumno &A, Curso c){
+void AgregarCursoAlumno(Alumno &A, Curso c)
+{
     InsBack(A.escolaridad, c);
 }
 
-int CantidadCursosAlumno(Alumno A){
+int CantidadCursosAlumno(Alumno A)
+{
     return CantidadCursosEscolaridad(A.escolaridad);
 }
 
-int CantidadCursosAprobadosAlumno(Alumno A){
+int CantidadCursosAprobadosAlumno(Alumno A)
+{
     return CantidadAprobados(A.escolaridad);
 }
 
-Boolean TieneAsignaturaAprobadaAlumno(Alumno A, int numeroAsignatura){
+Boolean TieneAsignaturaAprobadaAlumno(Alumno A, int numeroAsignatura)
+{
     return AsignaturaAprobada(A.escolaridad, numeroAsignatura);
+}
+
+void MostrarAlumnoEspecifico(Alumno a)
+{
+    printf("  DATOS DEL ALUMNO");
+    printf("---------------------");
+    printf("Cedula: %ld ", a.cedula);
+    printf("Nombre: ");
+    print(a.nombre);
+    printf("Apellido: ");
+    print(a.apellido);
+    printf("Telefono: ");
+    print(a.telefono);
 }

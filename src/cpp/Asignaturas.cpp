@@ -41,6 +41,7 @@ void ListarAsignaturas(Asignaturas asignaturas)
     }
     else
     {
+        printf("Cant asig = %d", asignaturas.cantidad);
         ListarAsignaturasMapeo(asignaturas.datos, asignaturas.cantidad);
     }
 }
