@@ -1,4 +1,31 @@
-#include "../include/Hash.h"
+#include "Hash.h"
+
+// FUNCIONES PRIVADAS AUXILIARES
+int Hashing(K clave)
+{
+    if (clave < 0)
+        clave = -clave;
+
+    return clave % B;
+}
+
+K DarClave(T e)
+{
+    return e.cedula;
+}
+
+ListaHash Buscar(Hash hash, K clave)
+{
+    int cubeta = Hashing(clave);
+    ListaHash aux = hash[cubeta];
+
+    while (aux != NULL && DarClave(aux->info) != clave)
+        aux = aux->sig;
+
+    return aux;
+}
+
+//   FIN
 
 void Crear(Hash &hash)
 {
@@ -57,29 +84,4 @@ void Eliminar(Hash &hash, K clave)
         aux->sig = borrar->sig;
         delete borrar;
     }
-}
-
-// FUNCIONES PRIVADAS AUXILIARES
-int Hashing(K clave)
-{
-    if (clave < 0)
-        clave = -clave;
-
-    return clave % B;
-}
-
-K DarClave(T e)
-{
-    return e.cedula;
-}
-
-ListaHash Buscar(Hash hash, K clave)
-{
-    int cubeta = Hashing(clave);
-    ListaHash aux = hash[cubeta];
-
-    while (aux != NULL && DarClave(aux->info) != clave)
-        aux = aux->sig;
-
-    return aux;
 }

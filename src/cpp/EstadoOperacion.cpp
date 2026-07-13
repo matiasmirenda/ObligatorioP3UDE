@@ -6,7 +6,7 @@ void MostrarEstadoOperacion(EstadoOperacion estado)
     switch (estado)
     {
     case OK:
-        printf("Operacion realizada correctamente.\n");
+        printf("\nOperacion realizada correctamente.\n");
         break;
 
     case MAXIMO_ASIGNATURAS_ALCANZADO:

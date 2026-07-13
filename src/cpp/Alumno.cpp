@@ -4,14 +4,17 @@
 void CargarAlumno(Alumno &A)
 {
     printf("Nombre: ");
+    fflush(stdin);
     strcrear(A.nombre);
     scan(A.nombre);
 
     printf("Apellido: ");
+    fflush(stdin);
     strcrear(A.apellido);
     scan(A.apellido);
 
     printf("Telefono: ");
+    fflush(stdin);
     strcrear(A.telefono);
     scan(A.telefono);
 
