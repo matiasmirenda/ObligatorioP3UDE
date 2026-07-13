@@ -37,11 +37,12 @@ void ListarAsignaturas(Asignaturas asignaturas)
 {
     if (asignaturas.cantidad == 0)
     {
-        printf("No hay asignaturas registradas");
+        printf("No hay asignaturas registradas\n");
     }
     else
     {
-        printf("Cant asig = %d", asignaturas.cantidad);
+
         ListarAsignaturasMapeo(asignaturas.datos, asignaturas.cantidad);
+        printf("\n \n Total de asignaturas: %d\n", asignaturas.cantidad);
     }
 }

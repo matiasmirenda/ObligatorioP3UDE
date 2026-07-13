@@ -54,11 +54,12 @@ Boolean esOptativa;
 
 void MostrarAsignatura(Asignatura a)
 {
-    printf("  ASIGNATURA: %d \n", a.numero);
-    printf("---------------------");
-    printf("Nombre: ");
+    printf("\n  ASIGNATURA: %d", a.numero);
+    printf("\n------------------");
+    printf("\n Nombre: ");
     print(a.nombre);
-    printf("Total horas: %d ", a.cantidadHoras);
-    printf("Es optativa: ");
+    printf("\n Total horas: %d ", a.cantidadHoras);
+    printf("\n Es optativa: ");
     Desplegar(a.esOptativa);
+    printf("\n");
 }
