@@ -1,5 +1,6 @@
 #ifndef STRING_H_INCLUDED
 #define STRING_H_INCLUDED
+
 #include "Boolean.h"
 
 const int MAX = 80;

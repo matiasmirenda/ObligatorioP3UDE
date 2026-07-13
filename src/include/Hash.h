@@ -1,7 +1,6 @@
 #ifndef HASH_H_INCLUDED
 #define HASH_H_INCLUDED
 
-#include "Boolean.h"
 #include "Alumno.h"
 
 const int B = 101;

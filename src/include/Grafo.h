@@ -1,7 +1,7 @@
 #ifndef GRAFO_H
 #define GRAFO_H
-#include "Boolean.h"
 
+#include "Boolean.h"
 
 // ============================================================
 // TAD Grafo
@@ -39,7 +39,6 @@ void CrearGrafo(Grafo &G);
 //               u != v (no se admiten lazos, ya que una asignatura
 //               no puede ser previa de si misma).
 void AgregarArista(Grafo &G, int u, int v);
-
 
 // Precondicion: 0 <= origen < MAX_ASIGNATURAS,
 //               0 <= destino < MAX_ASIGNATURAS

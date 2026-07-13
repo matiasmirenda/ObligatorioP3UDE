@@ -1,7 +1,6 @@
 #ifndef ESCOLARIDAD_H
 #define ESCOLARIDAD_H
-#include "Boolean.h"
-#include "Curso.h"
+
 #include "Lista.h"
 
 const int NOTA_APROBACION = 6;

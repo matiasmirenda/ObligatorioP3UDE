@@ -1,7 +1,6 @@
 #ifndef CURSO_H_INCLUDED
 #define CURSO_H_INCLUDED
 
-#include "Boolean.h"
 #include "Fecha.h"
 
 typedef struct

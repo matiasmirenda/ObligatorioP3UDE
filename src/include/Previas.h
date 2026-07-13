@@ -2,7 +2,6 @@
 #define PREVIAS_H
 
 #include "Grafo.h"
-#include "Boolean.h"
 
 // ============================================================
 // TAD Previaturas
@@ -42,8 +41,8 @@ Boolean EsPreviaDirecta(Previaturas P, int u, int v);
 // verificar que el alumno tenga aprobadas todas  sus previas inmediatas antes de cursar v.
 void PreviasInmediatasDe(Previaturas P, int v, int pre[], int &cantPre);
 
-// Previas[] y cantPrevias quedan con TODAS las 
-//previas de la asignatura v (inmediatas y noinmediatas). El orden en que se listan es irrelevante.
+// Previas[] y cantPrevias quedan con TODAS las
+// previas de la asignatura v (inmediatas y noinmediatas). El orden en que se listan es irrelevante.
 void PreviasDe(Previaturas P, int v, int previas[], int &cantPrevias);
 
 #endif

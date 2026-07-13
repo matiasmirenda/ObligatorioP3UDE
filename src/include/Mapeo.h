@@ -1,6 +1,6 @@
 #ifndef MAPEO_H
 #define MAPEO_H
-#include "Boolean.h"
+
 #include "Asignatura.h"
 
 const int TAM = 30;

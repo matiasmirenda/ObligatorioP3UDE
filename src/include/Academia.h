@@ -1,5 +1,6 @@
 #ifndef ACADEMIA_H_INCLUDED
 #define ACADEMIA_H_INCLUDED
+
 #include "Asignaturas.h"
 #include "Alumnos.h"
 #include "Previas.h"
@@ -34,15 +35,12 @@ EstadoOperacion RegistrarPreviatura(
 // El alumno queda inscripto en la academia si no estaba inscripto previamente.
 void InscribirAlumnoAcademia(Academia &A, Alumno &alumno);
 
-
-
 Boolean TienePreviasInmediatasAprobadas(Academia &A, Alumno alumno, int numeroAsignatura);
 
-
 void RegistrarCursoAcademia(Academia &A, long int cedula,
-                                          int numeroAsignatura,
-                                          Fecha fechaFinalizacion,
-                                          int calificacion);
+                            int numeroAsignatura,
+                            Fecha fechaFinalizacion,
+                            int calificacion);
 
 // Lista por pantalla todas las asignaturas
 // registradas en la academia ordenadas por número.
