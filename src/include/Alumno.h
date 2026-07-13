@@ -69,4 +69,7 @@ Boolean TieneAsignaturaAprobadaAlumno(Alumno A, int numeroAsignatura);
 // Muestra un alumno por pantalla
 void MostrarAlumnoEspecifico(Alumno a);
 
+// Muestra la escolaridad de un alumno por pan
+void MostrarEscolaridadEspecifica(Alumno a);
+
 #endif

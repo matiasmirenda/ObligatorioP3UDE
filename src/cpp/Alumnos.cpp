@@ -31,3 +31,8 @@ void MostrarAlumno(Alumnos alumnos, long int cedula)
 
     MostrarAlumnoEspecifico(ObtenerAlumno(alumnos, cedula));
 }
+
+void MostrarEscolaridadAlumno(Alumnos alumnos, long int cedula)
+{
+    MostrarEscolaridadEspecifica(ObtenerAlumno(alumnos, cedula));
+}

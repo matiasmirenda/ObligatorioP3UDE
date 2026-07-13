@@ -40,4 +40,7 @@ int CantidadAprobados(Escolaridad e);
 // Devuelve la cantidad de cursos registrados en la escolaridad.
 int CantidadCursosEscolaridad(Escolaridad e);
 
+// Muestra una escolaridad por pantalla
+void MostrarEscolaridad(Escolaridad e);
+
 #endif

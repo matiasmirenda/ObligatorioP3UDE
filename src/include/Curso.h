@@ -26,4 +26,7 @@ int DarCalificacionCurso(Curso c);
 // Devuelve TRUE si el curso está aprobado.
 Boolean CursoAprobado(Curso c);
 
+// Muestra un curso por pantalla
+void MostrarCurso(Curso c);
+
 #endif

@@ -23,7 +23,10 @@ Alumno ObtenerAlumno(Alumnos alumnos, long int cedula);
 // Actualiza los datos de un alumno ya registrado.
 void ModificarAlumno(Alumnos &alumnos, Alumno a);
 
-// Muestra la info de un alumno especifico si existe
+// Muestra la info de un alumno especifico
 void MostrarAlumno(Alumnos alumnos, long int cedula);
+
+// Muestra la escolaridad de un alumno especifico
+void MostrarEscolaridadAlumno(Alumnos alumnos, long int cedula);
 
 #endif

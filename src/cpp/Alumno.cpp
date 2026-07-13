@@ -75,3 +75,8 @@ void MostrarAlumnoEspecifico(Alumno a)
     printf("\nTelefono: ");
     print(a.telefono);
 }
+
+void MostrarEscolaridadEspecifica(Alumno a)
+{
+    MostrarEscolaridad(a.escolaridad);
+}

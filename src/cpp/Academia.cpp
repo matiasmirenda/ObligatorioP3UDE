@@ -226,7 +226,7 @@ void MostrarDatosAlumnoAcademia(
 
     if (ExisteAlumno(academia.alumnos, cedula) == FALSE)
     {
-        printf("No existe una alumno con el documento ingresado");
+        printf("No existe un alumno con el documento ingresado");
     }
     else
     {
@@ -239,5 +239,12 @@ void MostrarEscolaridadAcademia(
     Academia academia,
     long int cedula)
 {
-    // TODO: implementar listado de escolaridad.
+    if (ExisteAlumno(academia.alumnos, cedula) == FALSE)
+    {
+        printf("No existe un alumno con el documento ingresado");
+    }
+    else
+    {
+        MostrarEscolaridadAlumno(academia.alumnos, cedula);
+    }
 }

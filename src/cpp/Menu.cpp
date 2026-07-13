@@ -91,6 +91,17 @@ void OpcionMostrarAlumno(Academia academia)
     MostrarDatosAlumnoAcademia(academia, ci);
 }
 
+void OpcionMostrarEscolaridad(Academia academia)
+{
+    long int ci;
+    printf("\n--- Listar escolaridad alumno ---\n");
+
+    printf("Documento del alumno: ");
+    scanf("%ld", &ci);
+
+    MostrarEscolaridadAcademia(academia, ci);
+}
+
 void EjecutarMenu(Academia &academia)
 {
     int opcion;
@@ -132,7 +143,7 @@ void EjecutarMenu(Academia &academia)
             break;
 
         case 8:
-            // JOHA
+            OpcionMostrarEscolaridad(academia);
             break;
 
         case 0:

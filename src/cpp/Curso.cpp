@@ -37,3 +37,15 @@ Boolean CursoAprobado(Curso c)
 
     return aprobado;
 }
+
+int numeroAsignatura;
+Fecha fechaFinalizacion;
+int calificacion;
+
+void MostrarCurso(Curso c)
+{
+    printf("\n  Curso %d\n", c.numeroAsignatura);
+    printf("\nFecha: ");
+    DarFecha(c.fechaFinalizacion);
+    printf("\n Calificacion: %d", c.calificacion);
+}
