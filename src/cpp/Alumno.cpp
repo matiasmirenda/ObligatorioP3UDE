@@ -65,13 +65,13 @@ Boolean TieneAsignaturaAprobadaAlumno(Alumno A, int numeroAsignatura)
 
 void MostrarAlumnoEspecifico(Alumno a)
 {
-    printf("  DATOS DEL ALUMNO");
-    printf("---------------------");
-    printf("Cedula: %ld ", a.cedula);
+    printf("\n  DATOS DEL ALUMNO\n");
+    printf("---------------------\n");
+    printf("Cedula: %ld \n", a.cedula);
     printf("Nombre: ");
     print(a.nombre);
-    printf("Apellido: ");
+    printf("\nApellido: ");
     print(a.apellido);
-    printf("Telefono: ");
+    printf("\nTelefono: ");
     print(a.telefono);
 }

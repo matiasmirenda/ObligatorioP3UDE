@@ -97,6 +97,7 @@ void EjecutarMenu(Academia &academia)
 
     do
     {
+        printf("\n \n");
         MostrarMenu();
         scanf("%d", &opcion);
 
