@@ -10,7 +10,6 @@ void CrearAcademia(Academia &academia)
     CrearPreviaturas(academia.previaturas);
 }
 
-// Requerimiento 1
 EstadoOperacion RegistrarNuevaAsignatura(
     Academia &academia,
     Asignatura asignatura)
@@ -31,7 +30,6 @@ EstadoOperacion RegistrarNuevaAsignatura(
     return estado;
 }
 
-// Requerimiento 2
 EstadoOperacion RegistrarPreviatura(
     Academia &academia,
     int numeroPrevia,
@@ -66,8 +64,6 @@ EstadoOperacion RegistrarPreviatura(
     return estado;
 }
 
-// Punto 3 — InscribirAlumnoAcademia: chequea ExisteAlumno por cédula antes de InscribirAlumno.
-
 void InscribirAlumnoAcademia(Academia &A, Alumno &alumno)
 {
     if (!ExisteAlumno(A.alumnos, DarCedula(alumno)))
@@ -75,10 +71,6 @@ void InscribirAlumnoAcademia(Academia &A, Alumno &alumno)
     else
         printf("El alumno con cedula %ld ya se encuentra inscripto en la academia.\n", DarCedula(alumno));
 }
-
-// Punto 4 — RegistrarCursoAcademia: chequea ExisteAlumno, ExisteAsignatura, que no esté ya aprobada,
-// que tenga aprobadas las previas inmediatas y que la fecha no sea anterior a la del último curso,
-// antes de agregar el curso con AgregarCursoAlumno y persistir con ModificarAlumno.
 
 Boolean TienePreviasInmediatasAprobadas(Academia &A, Alumno alumno, int numeroAsignatura)
 {
@@ -157,7 +149,6 @@ void RegistrarCursoAcademia(Academia &ac, long int cedula,
     }
 }
 
-// Requerimiento 5
 void ListarAsignaturasAcademia(Academia academia)
 {
     int cantAsignaturas = CantidadAsignaturas(academia.asignaturas);
@@ -173,7 +164,6 @@ void ListarAsignaturasAcademia(Academia academia)
     }
 }
 
-// Requerimiento 6
 void ListarPreviasAcademia(
     Academia academia,
     int numeroAsignatura)
@@ -218,7 +208,6 @@ void ListarPreviasAcademia(
     }
 }
 
-// Requerimiento 7
 void MostrarDatosAlumnoAcademia(
     Academia academia,
     long int cedula)
@@ -234,7 +223,6 @@ void MostrarDatosAlumnoAcademia(
     }
 }
 
-// Requerimiento 8
 void MostrarEscolaridadAcademia(
     Academia academia,
     long int cedula)

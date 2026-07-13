@@ -10,22 +10,23 @@ typedef struct
     int calificacion;
 } Curso;
 
-// Carga por teclado los datos de un curso.
+// Carga por teclado los datos de un curso
 void CargarCurso(Curso &c);
 
-// Devuelve el número de asignatura del curso.
+// Devuelve el número de asignatura del curso
 int DarNumeroAsignaturaCurso(Curso c);
 
-// Devuelve la fecha de finalización del curso.
+// Devuelve la fecha de finalización del curso
 Fecha DarFechaFinalizacionCurso(Curso c);
 
-// Devuelve la calificación final del curso.
+// Devuelve la calificación final del curso
 int DarCalificacionCurso(Curso c);
 
-// Devuelve TRUE si el curso está aprobado.
+// Devuelve TRUE si el curso está aprobado O FALSE en caso contrario
 Boolean CursoAprobado(Curso c);
 
 // Muestra un curso por pantalla
+// Precondición: el curso existe
 void MostrarCurso(Curso c);
 
 #endif

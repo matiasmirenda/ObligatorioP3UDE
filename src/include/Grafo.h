@@ -3,54 +3,31 @@
 
 #include "Boolean.h"
 
-// ============================================================
-// TAD Grafo
-// ------------------------------------------------------------
-// Representa el grafo de previaturas entre asignaturas de la
-// carrera. Es un grafo DIRIGIDO y ACICLICO (DAG):
-//   - Vertices: asignaturas, identificadas por su numero
-//               (0 .. MAX_ASIGNATURAS-1).
-//   - Aristas: dada la arista (u, v), significa que la
-//              asignatura u es previa DIRECTA de la
-//              asignatura v.
-//
-// Estructura elegida: matriz de adyacencia de enteros.
-// Justificacion: la cantidad de asignaturas esta acotada
-// (maximo 30), por lo que la matriz ocupa poca memoria.
-// Ademas, se indica que el regimen de previaturas es estricto
-// y la cantidad de previaturas es elevada, por lo que interesa
-// poder consultar en O(1) si existe una previatura directa
-// entre dos asignaturas (HayArista), operacion que se usa
-// frecuentemente (por ejemplo, al chequear previas inmediatas
-// aprobadas al registrar un curso).
-// Al no ser un multigrafo (a lo sumo una previatura directa
-// entre dos asignaturas dadas), cada celda vale 1 si existe la
-// arista, o 0 si no existe.
-// ============================================================
-
 const int MAX_ASIGNATURAS = 30;
 
 typedef int Grafo[MAX_ASIGNATURAS][MAX_ASIGNATURAS];
 
-// Precondicion: -No hay precondiciones sobre el grafo, ya que se crea vacio.
+// Crea un grafo vacio
 void CrearGrafo(Grafo &G);
 
-// Precondicion: 0 <= u < MAX_ASIGNATURAS, 0 <= v < MAX_ASIGNATURAS,
-//               u != v (no se admiten lazos, ya que una asignatura
-//               no puede ser previa de si misma).
+// Agrega una previatura (arista) directa entre dos asignaturas (u y v)
+// Precondición: u y v son dos asigaturas diferentes y existentes
 void AgregarArista(Grafo &G, int u, int v);
 
-// Precondicion: 0 <= origen < MAX_ASIGNATURAS,
-//               0 <= destino < MAX_ASIGNATURAS
+// Determina si existe un camino entre origen y destino (si dos asignaturas son previas indirectas)
+// Precondición: origen y destino son dos asigaturas diferentes y existentes
 Boolean ExisteCamino(Grafo G, int origen, int destino);
 
-// Precondicion: 0 <= v < MAX_ASIGNATURAS
+// Permite obtener todas las previas inmediatas a v
+// Precondición: v es una asigatura existente
 void PreviasInmediatas(Grafo G, int v, int pre[], int &cantPre);
 
-// Precondicion: 0 <= u < MAX_ASIGNATURAS, 0 <= v < MAX_ASIGNATURAS
+// Retorna TRUE si u es previa directa de v (hay una arista entre u y v) o FALSE en caso contrario
+// Precondición: u y v son dos asigaturas existentes
 Boolean HayArista(Grafo G, int u, int v);
 
-// Precondicion: 0 <= v < MAX_ASIGNATURAS
+// Devuelce todas las previas (inmediatas y no inmediatas) a v
+// Precondición: v es una asigatura existente
 void TodasLasPrevias(Grafo G, int v, int previas[], int &cantPrevias);
 
 #endif
