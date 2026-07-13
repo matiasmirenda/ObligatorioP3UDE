@@ -160,7 +160,17 @@ void RegistrarCursoAcademia(Academia &ac, long int cedula,
 // Requerimiento 5
 void ListarAsignaturasAcademia(Academia academia)
 {
-    // TODO: implementar listado de asignaturas.
+    int cantAsignaturas = CantidadAsignaturas(academia.asignaturas);
+    if (cantAsignaturas == 0)
+    {
+        printf("No hay asignaturas registradas\n");
+    }
+    else
+    {
+
+        ListarAsignaturas(academia.asignaturas);
+        printf("\n \n Total de asignaturas: %d\n", cantAsignaturas);
+    }
 }
 
 // Requerimiento 6

@@ -7,5 +7,4 @@ int main()
     CrearAcademia(academia);
 
     EjecutarMenu(academia);
-    //    printf("Obligatorio P3 UDE");
 }

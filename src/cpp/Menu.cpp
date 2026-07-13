@@ -63,7 +63,7 @@ void OpcionRegistrarPreviatura(Academia &academia)
 void OpcionListarAsignaturas(Academia academia)
 {
     printf("\n--- Listar asignaturas ---\n");
-    ListarAsignaturas(academia.asignaturas);
+    ListarAsignaturasAcademia(academia);
 }
 
 void OpcionListarPrevias(Academia academia)
