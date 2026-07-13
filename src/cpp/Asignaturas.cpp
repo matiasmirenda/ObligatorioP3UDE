@@ -32,3 +32,15 @@ int CantidadAsignaturas(Asignaturas asignaturas)
 {
     return asignaturas.cantidad;
 }
+
+void ListarAsignaturas(Asignaturas asignaturas)
+{
+    if (asignaturas.cantidad == 0)
+    {
+        printf("No hay asignaturas registradas");
+    }
+    else
+    {
+        ListarAsignaturasMapeo(asignaturas.datos, asignaturas.cantidad);
+    }
+}

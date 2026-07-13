@@ -9,12 +9,12 @@ void MostrarMenu()
     printf("=====================================\n");
     printf("          ACADEMIA DE MODA\n");
     printf("=====================================\n");
-    printf("1. Registrar una nueva asignatura\n");
-    printf("2. Agregar una previatura\n");
+    printf("1. Registrar una nueva asignatura\n"); // OK
+    printf("2. Agregar una previatura\n");         // OK
     printf("3. Inscribir un nuevo alumno\n");
     printf("4. Registrar un curso\n");
-    printf("5. Listar todas las asignaturas\n");
-    printf("6. Listar previas de una asignatura\n");
+    printf("5. Listar todas las asignaturas\n");     // OK
+    printf("6. Listar previas de una asignatura\n"); // OK
     printf("7. Mostrar datos de un alumno\n");
     printf("8. Mostrar escolaridad de un alumno\n");
     printf("0. Salir\n");
@@ -22,7 +22,7 @@ void MostrarMenu()
     printf("Ingrese una opcion: ");
 }
 
-void OpcionRegistrarAsignatura(Academia &academia)
+void OpcionRegistrarAsignatura(Academia &academia) // Op. 1
 {
     Asignatura asignatura;
 
@@ -38,7 +38,7 @@ void OpcionRegistrarAsignatura(Academia &academia)
     MostrarEstadoOperacion(estado);
 }
 
-void OpcionRegistrarPreviatura(Academia &academia)
+void OpcionRegistrarPreviatura(Academia &academia) // Op. 2
 {
     int numeroPrevia;
     int numeroAsignatura;
@@ -60,7 +60,13 @@ void OpcionRegistrarPreviatura(Academia &academia)
     MostrarEstadoOperacion(estado);
 }
 
-void OpcionListarPrevias(Academia academia)
+void OpcionListarAsignaturas(Academia academia) // Op. 5
+{
+    printf("\n--- Listar asignaturas ---\n");
+    ListarAsignaturas(academia.asignaturas);
+}
+
+void OpcionListarPrevias(Academia academia) // Op. 6
 {
     int numeroAsignatura;
 

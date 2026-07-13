@@ -34,4 +34,7 @@ Asignatura Obtener(Mapeo m, int pos);
 // Devuelve la cantidad de asignaturas registradas
 int CantidadRegistradas(Mapeo m);
 
+// Lista todos los elementos existentes en el mapeo
+void ListarAsignaturasMapeo(Mapeo m, int cant);
+
 #endif

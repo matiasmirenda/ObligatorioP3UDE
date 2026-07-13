@@ -26,7 +26,7 @@ void Cargar(Boolean &b)
 void Desplegar(Boolean b)
 {
     if (b)
-        printf("verdadero");
+        printf("SI");
     else
-        printf("falso");
+        printf("NO");
 }
