@@ -64,12 +64,15 @@ EstadoOperacion RegistrarPreviatura(
     return estado;
 }
 
-void InscribirAlumnoAcademia(Academia &A, Alumno &alumno)
+void InscribirAlumnoAcademia(Academia &A)
 {
-    if (!ExisteAlumno(A.alumnos, DarCedula(alumno)))
-        InscribirAlumno(A.alumnos, alumno);
+    Alumno nuevoAlumno;
+    CargarAlumno(nuevoAlumno);
+
+    if (!ExisteAlumno(A.alumnos, DarCedula(nuevoAlumno)))
+        InscribirAlumno(A.alumnos, nuevoAlumno);
     else
-        printf("El alumno con cedula %ld ya se encuentra inscripto en la academia.\n", DarCedula(alumno));
+        printf("El alumno con cedula %ld ya se encuentra inscripto en la academia.\n", DarCedula(nuevoAlumno));
 }
 
 Boolean TienePreviasInmediatasAprobadas(Academia &A, Alumno alumno, int numeroAsignatura)
@@ -89,11 +92,11 @@ Boolean TienePreviasInmediatasAprobadas(Academia &A, Alumno alumno, int numeroAs
     return todasAprobadas;
 }
 
-void RegistrarCursoAcademia(Academia &ac, long int cedula,
-                            int numeroAsignatura,
-                            Fecha fechaFinalizacion,
-                            int calificacion)
+void RegistrarCursoAcademia(Academia &ac, long int cedula)
 {
+    Curso nuevoCurso;
+    CargarCurso(nuevoCurso);
+    int numeroAsignatura = DarNumeroAsignaturaCurso(nuevoCurso);
 
     if (!ExisteAlumno(ac.alumnos, cedula))
     {
@@ -125,7 +128,7 @@ void RegistrarCursoAcademia(Academia &ac, long int cedula,
                 Curso ultimo = Ultimo(esc);
                 Fecha fechaUltimoCurso = DarFechaFinalizacionCurso(ultimo);
 
-                if (EsFechaMayor(fechaUltimoCurso, fechaFinalizacion))
+                if (EsFechaMayor(fechaUltimoCurso, DarFechaFinalizacionCurso(nuevoCurso)))
                     fechaValida = FALSE;
             }
 
@@ -137,8 +140,8 @@ void RegistrarCursoAcademia(Academia &ac, long int cedula,
             {
                 Curso nuevoCurso;
                 nuevoCurso.numeroAsignatura = numeroAsignatura;
-                nuevoCurso.fechaFinalizacion = fechaFinalizacion;
-                nuevoCurso.calificacion = calificacion;
+                nuevoCurso.fechaFinalizacion = DarFechaFinalizacionCurso(nuevoCurso);
+                nuevoCurso.calificacion = DarCalificacionCurso(nuevoCurso);
 
                 AgregarCursoAlumno(alumno, nuevoCurso);
                 ModificarAlumno(ac.alumnos, alumno);

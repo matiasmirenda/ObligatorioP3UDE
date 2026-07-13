@@ -4,7 +4,7 @@ void CopiarAsignatura(Asignatura origen, Asignatura &destino)
 {
     strcrear(destino.nombre);
     strcop(destino.nombre, DarNombreAsignatura(origen));
-    destino.numero = origen.numero;
+    destino.numero = DarNumeroAsignatura(origen);
     destino.cantidadHoras = DarCantidadHorasAsignatura(origen);
     destino.esOptativa = EsAsignaturaOptativa(origen);
 }

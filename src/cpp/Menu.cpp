@@ -12,7 +12,7 @@ void MostrarMenu()
     printf("1. Registrar una nueva asignatura\n");
     printf("2. Agregar una previatura\n");
     printf("3. Inscribir un nuevo alumno\n");
-    printf("4. Registrar un curso\n");
+    printf("4. Registrar un curso en escolaridad\n");
     printf("5. Listar todas las asignaturas\n");
     printf("6. Listar previas de una asignatura\n");
     printf("7. Mostrar datos de un alumno\n");
@@ -58,6 +58,22 @@ void OpcionRegistrarPreviatura(Academia &academia)
             numeroAsignatura);
 
     MostrarEstadoOperacion(estado);
+}
+
+void OpcionInscribirAlumno(Academia academia)
+{
+    printf("\n--- Inscribir alumno ---\n");
+    InscribirAlumnoAcademia(academia);
+}
+
+void OpcionRegistrarCursoEscolaridad(Academia academia)
+{
+    printf("\n--- Registrar curso ---\n");
+
+    long int ci;
+    printf("Documento del alumno: ");
+    scanf("%ld", &ci);
+    RegistrarCursoAcademia(academia, ci);
 }
 
 void OpcionListarAsignaturas(Academia academia)
@@ -123,11 +139,11 @@ void EjecutarMenu(Academia &academia)
             break;
 
         case 3:
-            // TODO
+            OpcionInscribirAlumno(academia);
             break;
 
         case 4:
-            // TODO
+            OpcionRegistrarCursoEscolaridad(academia);
             break;
 
         case 5:

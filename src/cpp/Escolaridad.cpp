@@ -33,9 +33,9 @@ Curso KEsimo(Escolaridad e, int k)
 Boolean AsignaturaAprobada(Escolaridad e, int numAsignatura)
 {
     Boolean encontrada = FALSE;
-    int i = 1;
+    int i = 1, largo = Largo(e.cursos);
 
-    while (i <= Largo(e.cursos) && !encontrada)
+    while (i <= largo && !encontrada)
     {
         Curso c = KEsimo(e.cursos, i);
         if (DarNumeroAsignaturaCurso(c) == numAsignatura &&
