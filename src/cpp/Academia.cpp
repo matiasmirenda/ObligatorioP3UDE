@@ -223,7 +223,15 @@ void MostrarDatosAlumnoAcademia(
     Academia academia,
     long int cedula)
 {
-    // TODO: implementar listado de datos del alumno.
+
+    if (ExisteAlumno(academia.alumnos, cedula) == FALSE)
+    {
+        printf("No existe una alumno con el documento ingresado");
+    }
+    else
+    {
+        MostrarAlumno(academia.alumnos, cedula);
+    }
 }
 
 // Requerimiento 8

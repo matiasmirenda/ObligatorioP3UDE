@@ -88,7 +88,7 @@ void OpcionMostrarAlumno(Academia academia)
     printf("Documento del alumno a listar: ");
     scanf("%ld", &ci);
 
-    MostrarAlumno(academia.alumnos, ci);
+    MostrarDatosAlumnoAcademia(academia, ci);
 }
 
 void EjecutarMenu(Academia &academia)
