@@ -43,3 +43,12 @@ int CantidadRegistradas(Mapeo m)
 {
     return m.cantidad;
 }
+
+void ListarAsignaturasMapeo(Mapeo m, int cant)
+{
+    int i;
+    for (i = 0; i < cant; i++)
+    {
+        MostrarAsignatura(m.celdas[i].info);
+    }
+}

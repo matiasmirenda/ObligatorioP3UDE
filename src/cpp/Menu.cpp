@@ -60,6 +60,12 @@ void OpcionRegistrarPreviatura(Academia &academia)
     MostrarEstadoOperacion(estado);
 }
 
+void OpcionListarAsignaturas(Academia academia)
+{
+    printf("\n--- Listar asignaturas ---\n");
+    ListarAsignaturasAcademia(academia);
+}
+
 void OpcionListarPrevias(Academia academia)
 {
     int numeroAsignatura;
@@ -74,12 +80,35 @@ void OpcionListarPrevias(Academia academia)
         numeroAsignatura);
 }
 
+void OpcionMostrarAlumno(Academia academia)
+{
+    long int ci;
+    printf("\n--- Listar alumno ---\n");
+
+    printf("Documento del alumno a listar: ");
+    scanf("%ld", &ci);
+
+    MostrarDatosAlumnoAcademia(academia, ci);
+}
+
+void OpcionMostrarEscolaridad(Academia academia)
+{
+    long int ci;
+    printf("\n--- Listar escolaridad alumno ---\n");
+
+    printf("Documento del alumno: ");
+    scanf("%ld", &ci);
+
+    MostrarEscolaridadAcademia(academia, ci);
+}
+
 void EjecutarMenu(Academia &academia)
 {
     int opcion;
 
     do
     {
+        printf("\n \n");
         MostrarMenu();
         scanf("%d", &opcion);
 
@@ -102,7 +131,7 @@ void EjecutarMenu(Academia &academia)
             break;
 
         case 5:
-            // TODO
+            OpcionListarAsignaturas(academia);
             break;
 
         case 6:
@@ -110,11 +139,11 @@ void EjecutarMenu(Academia &academia)
             break;
 
         case 7:
-            // TODO
+            OpcionMostrarAlumno(academia);
             break;
 
         case 8:
-            // TODO
+            OpcionMostrarEscolaridad(academia);
             break;
 
         case 0:

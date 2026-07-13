@@ -1,7 +1,10 @@
 #include <iostream>
+#include "Menu.h"
 
 int main()
 {
-    printf("Obligatorio P3 UDE");
-    return 0;
+    Academia academia;
+    CrearAcademia(academia);
+
+    EjecutarMenu(academia);
 }

@@ -46,3 +46,20 @@ void AsignarNumeroAsignatura(
 {
     a.numero = numero;
 }
+
+String nombre;
+int cantidadHoras;
+int numero;
+Boolean esOptativa;
+
+void MostrarAsignatura(Asignatura a)
+{
+    printf("\n  ASIGNATURA: %d", a.numero);
+    printf("\n------------------");
+    printf("\n Nombre: ");
+    print(a.nombre);
+    printf("\n Total horas: %d ", a.cantidadHoras);
+    printf("\n Es optativa: ");
+    Desplegar(a.esOptativa);
+    printf("\n");
+}

@@ -32,3 +32,8 @@ int CantidadAsignaturas(Asignaturas asignaturas)
 {
     return asignaturas.cantidad;
 }
+
+void ListarAsignaturas(Asignaturas asignaturas)
+{
+    ListarAsignaturasMapeo(asignaturas.datos, asignaturas.cantidad);
+}

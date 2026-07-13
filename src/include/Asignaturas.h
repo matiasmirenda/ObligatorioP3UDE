@@ -29,4 +29,7 @@ Asignatura ObtenerAsignatura(Asignaturas asignaturas, int numero);
 // Devuelve la cantidad de asignaturas registradas.
 int CantidadAsignaturas(Asignaturas asignaturas);
 
+// Lista todas las asignaturas
+void ListarAsignaturas(Asignaturas asignaturas);
+
 #endif

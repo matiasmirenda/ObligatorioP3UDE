@@ -3,12 +3,6 @@
 #include "Asignaturas.h"
 #include <stdio.h>
 
-
-
-
-
-
-
 void CrearAcademia(Academia &academia)
 {
     CrearAsignaturas(academia.asignaturas);
@@ -72,7 +66,7 @@ EstadoOperacion RegistrarPreviatura(
     return estado;
 }
 
-//Punto 3 — InscribirAlumnoAcademia: chequea ExisteAlumno por cédula antes de InscribirAlumno.
+// Punto 3 — InscribirAlumnoAcademia: chequea ExisteAlumno por cédula antes de InscribirAlumno.
 
 void InscribirAlumnoAcademia(Academia &A, Alumno &alumno)
 {
@@ -82,9 +76,9 @@ void InscribirAlumnoAcademia(Academia &A, Alumno &alumno)
         printf("El alumno con cedula %ld ya se encuentra inscripto en la academia.\n", DarCedula(alumno));
 }
 
-//Punto 4 — RegistrarCursoAcademia: chequea ExisteAlumno, ExisteAsignatura, que no esté ya aprobada, 
-//que tenga aprobadas las previas inmediatas y que la fecha no sea anterior a la del último curso, 
-//antes de agregar el curso con AgregarCursoAlumno y persistir con ModificarAlumno.
+// Punto 4 — RegistrarCursoAcademia: chequea ExisteAlumno, ExisteAsignatura, que no esté ya aprobada,
+// que tenga aprobadas las previas inmediatas y que la fecha no sea anterior a la del último curso,
+// antes de agregar el curso con AgregarCursoAlumno y persistir con ModificarAlumno.
 
 Boolean TienePreviasInmediatasAprobadas(Academia &A, Alumno alumno, int numeroAsignatura)
 {
@@ -103,17 +97,15 @@ Boolean TienePreviasInmediatasAprobadas(Academia &A, Alumno alumno, int numeroAs
     return todasAprobadas;
 }
 
-
 void RegistrarCursoAcademia(Academia &ac, long int cedula,
-                                          int numeroAsignatura,
-                                          Fecha fechaFinalizacion,
-                                          int calificacion)
+                            int numeroAsignatura,
+                            Fecha fechaFinalizacion,
+                            int calificacion)
 {
-    
 
     if (!ExisteAlumno(ac.alumnos, cedula))
     {
-       printf("El alumno con cedula %ld no se encuentra inscripto en la academia.\n",cedula);
+        printf("El alumno con cedula %ld no se encuentra inscripto en la academia.\n", cedula);
     }
     else if (!ExisteAsignatura(ac.asignaturas, numeroAsignatura))
     {
@@ -147,7 +139,7 @@ void RegistrarCursoAcademia(Academia &ac, long int cedula,
 
             if (!fechaValida)
             {
-                printf("La fecha de finalización es anterior a la del último curso registrado para el alumno con cedula %ld.\n", cedula);
+                printf("La fecha de finalizacion es anterior a la del ultimo curso registrado para el alumno con cedula %ld.\n", cedula);
             }
             else
             {
@@ -163,14 +155,22 @@ void RegistrarCursoAcademia(Academia &ac, long int cedula,
             }
         }
     }
-
-
 }
 
 // Requerimiento 5
 void ListarAsignaturasAcademia(Academia academia)
 {
-    // TODO: implementar listado de asignaturas.
+    int cantAsignaturas = CantidadAsignaturas(academia.asignaturas);
+    if (cantAsignaturas == 0)
+    {
+        printf("No hay asignaturas registradas\n");
+    }
+    else
+    {
+
+        ListarAsignaturas(academia.asignaturas);
+        printf("\n \n Total de asignaturas: %d\n", cantAsignaturas);
+    }
 }
 
 // Requerimiento 6
@@ -223,7 +223,15 @@ void MostrarDatosAlumnoAcademia(
     Academia academia,
     long int cedula)
 {
-    // TODO: implementar listado de datos del alumno.
+
+    if (ExisteAlumno(academia.alumnos, cedula) == FALSE)
+    {
+        printf("No existe un alumno con el documento ingresado");
+    }
+    else
+    {
+        MostrarAlumno(academia.alumnos, cedula);
+    }
 }
 
 // Requerimiento 8
@@ -231,5 +239,12 @@ void MostrarEscolaridadAcademia(
     Academia academia,
     long int cedula)
 {
-    // TODO: implementar listado de escolaridad.
+    if (ExisteAlumno(academia.alumnos, cedula) == FALSE)
+    {
+        printf("No existe un alumno con el documento ingresado");
+    }
+    else
+    {
+        MostrarEscolaridadAlumno(academia.alumnos, cedula);
+    }
 }

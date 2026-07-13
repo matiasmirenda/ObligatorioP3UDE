@@ -25,3 +25,14 @@ void ModificarAlumno(Alumnos &alumnos, Alumno a)
     Eliminar(alumnos, a.cedula);
     Insertar(alumnos, a);
 }
+
+void MostrarAlumno(Alumnos alumnos, long int cedula)
+{
+
+    MostrarAlumnoEspecifico(ObtenerAlumno(alumnos, cedula));
+}
+
+void MostrarEscolaridadAlumno(Alumnos alumnos, long int cedula)
+{
+    MostrarEscolaridadEspecifica(ObtenerAlumno(alumnos, cedula));
+}

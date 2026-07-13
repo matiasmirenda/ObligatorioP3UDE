@@ -30,4 +30,8 @@ Boolean EsAsignaturaOptativa(Asignatura a);
 void AsignarNumeroAsignatura(
     Asignatura &a,
     int numero);
+
+// Despliega por pantalla una asignatura
+void MostrarAsignatura(Asignatura a);
+
 #endif
