@@ -68,8 +68,8 @@ int CantidadCursosEscolaridad(Escolaridad e)
 void MostrarEscolaridad(Escolaridad e, Asignaturas asignaturas)
 {
     int k, largo = CantidadCursosEscolaridad(e);
-    printf("\nESCOLARIDAD DEL ALUMNO");
-    printf("\n-------------------------");
+    printf("\n  ESCOLARIDAD DEL ALUMNO");
+    printf("\n--------------------------");
 
     for (k = 1; k <= largo; k++)
     {

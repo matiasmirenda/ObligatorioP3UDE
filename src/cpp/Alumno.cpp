@@ -77,6 +77,8 @@ void MostrarAlumnoEspecifico(Alumno a)
     print(a.apellido);
     printf("\nTelefono: ");
     print(a.telefono);
+    printf("\nCursos en escolaridad: %d", CantidadCursosAlumno(a));
+    printf("\nCursos aprobados: %d", CantidadCursosAprobadosAlumno(a));
 }
 
 void MostrarEscolaridadEspecifica(Alumno a, Asignaturas asignaturas)
