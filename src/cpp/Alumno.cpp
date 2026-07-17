@@ -4,14 +4,17 @@
 void CargarAlumno(Alumno &A)
 {
     printf("Nombre: ");
+    fflush(stdin);
     strcrear(A.nombre);
     scan(A.nombre);
 
     printf("Apellido: ");
+    fflush(stdin);
     strcrear(A.apellido);
     scan(A.apellido);
 
     printf("Telefono: ");
+    fflush(stdin);
     strcrear(A.telefono);
     scan(A.telefono);
 
@@ -23,19 +26,6 @@ void CargarAlumno(Alumno &A)
 long int DarCedula(Alumno A)
 {
     return A.cedula;
-}
-
-void DarNombre(Alumno A, String &nombre)
-{
-    strcop(nombre, A.nombre);
-}
-void DarApellido(Alumno A, String &apellido)
-{
-    strcop(apellido, A.apellido);
-}
-void DarTelefono(Alumno A, String &telefono)
-{
-    strcop(telefono, A.telefono);
 }
 
 Escolaridad DarEscolaridad(Alumno A)
@@ -74,9 +64,11 @@ void MostrarAlumnoEspecifico(Alumno a)
     print(a.apellido);
     printf("\nTelefono: ");
     print(a.telefono);
+    printf("\nCursos en escolaridad: %d", CantidadCursosAlumno(a));
+    printf("\nCursos aprobados: %d", CantidadCursosAprobadosAlumno(a));
 }
 
-void MostrarEscolaridadEspecifica(Alumno a)
+void MostrarEscolaridadEspecifica(Alumno a, Asignaturas asignaturas)
 {
-    MostrarEscolaridad(a.escolaridad);
+    MostrarEscolaridad(a.escolaridad, asignaturas);
 }

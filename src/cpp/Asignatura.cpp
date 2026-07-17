@@ -1,11 +1,12 @@
-#include "../include/Asignatura.h"
+#include "Asignatura.h"
 
 void CargarAsignatura(Asignatura &a)
 {
-
     printf("Nombre: ");
+    fflush(stdin);
     strcrear(a.nombre);
     scan(a.nombre);
+    fflush(stdin);
 
     printf("Cantidad de horas: ");
     scanf("%d", &a.cantidadHoras);

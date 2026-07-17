@@ -1,7 +1,6 @@
 #ifndef HASH_H_INCLUDED
 #define HASH_H_INCLUDED
 
-#include "Boolean.h"
 #include "Alumno.h"
 
 const int B = 101;
@@ -25,16 +24,16 @@ void Crear(Hash &h);
 // Devuelve TRUE si existe un elemento con la clave indicada.
 Boolean Pertenece(Hash h, K clave);
 
-// Precondición: !Pertenece(h, DarClave(e))
 // Inserta un elemento en el hash.
+// Precondición: !Pertenece(h, DarClave(e))
 void Insertar(Hash &h, T e);
 
-// Precondición: Pertenece(h, clave)
 // Devuelve el elemento asociado a la clave indicada.
+// Precondición: Pertenece(h, clave)
 T Obtener(Hash h, K clave);
 
-// Precondición: Pertenece(hash, clave)
 // Elimina el elemento asociado a la clave indicada.
+// Precondición: Pertenece(hash, clave)
 void Eliminar(Hash &hash, K clave);
 
 #endif

@@ -1,7 +1,6 @@
-#include "../include/Hash.h"
+#include "Hash.h"
 
-// privadas y auxiliares
-
+// FUNCIONES PRIVADAS AUXILIARES
 int Hashing(K clave)
 {
     if (clave < 0)
@@ -26,7 +25,7 @@ ListaHash Buscar(Hash hash, K clave)
     return aux;
 }
 
-// TAD Hash
+//   FIN
 
 void Crear(Hash &hash)
 {

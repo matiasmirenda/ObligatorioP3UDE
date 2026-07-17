@@ -10,11 +10,6 @@ Boolean EsVacia(Escolaridad e)
     return EsVacia(e.cursos);
 }
 
-int Largo(Escolaridad e)
-{
-    return Largo(e.cursos);
-}
-
 void InsBack(Escolaridad &e, Curso c)
 {
     InsBack(e.cursos, c);
@@ -25,61 +20,59 @@ Curso Ultimo(Escolaridad e)
     return Ultimo(e.cursos);
 }
 
-Curso KEsimo(Escolaridad e, int k)
-{
-    return KEsimo(e.cursos, k);
-}
-
 Boolean AsignaturaAprobada(Escolaridad e, int numAsignatura)
 {
+    NodoLista *aux = e.cursos.prim;
     Boolean encontrada = FALSE;
-    int i = 1;
 
-    while (i <= Largo(e.cursos) && !encontrada)
+    while (aux != NULL && !encontrada)
     {
-        Curso c = KEsimo(e.cursos, i);
+        Curso c = aux->info;
+
         if (DarNumeroAsignaturaCurso(c) == numAsignatura &&
-            DarCalificacionCurso(c) >= NOTA_APROBACION)
+            CursoAprobado(c))
+        {
             encontrada = TRUE;
-        i++;
+        }
+
+        aux = aux->sig;
     }
+
     return encontrada;
 }
 
 int CantidadAprobados(Escolaridad e)
 {
-    int cant = 0, i;
-    int largo = Largo(e.cursos);
+    int cant = 0;
 
-    for (i = 1; i <= largo; i++)
+    NodoLista *aux = e.cursos.prim;
+
+    while (aux != NULL)
     {
-        Curso c = KEsimo(e.cursos, i);
-        if (DarCalificacionCurso(c) >= NOTA_APROBACION)
+        if (CursoAprobado(aux->info))
             cant++;
+
+        aux = aux->sig;
     }
+
     return cant;
 }
 
 int CantidadCursosEscolaridad(Escolaridad e)
 {
-    int cant = 0, i;
-    int largo = Largo(e.cursos);
-
-    for (i = 1; i <= largo; i++)
-    {
-        cant++;
-    }
-    return cant;
+    return Largo(e.cursos);
 }
 
-void MostrarEscolaridad(Escolaridad e)
+void MostrarEscolaridad(Escolaridad e, Asignaturas asignaturas)
 {
-    int k, largo = CantidadCursosEscolaridad(e);
-    printf("\nESCOLARIDAD DEL ALUMNO");
-    printf("\n-------------------------");
+    printf("\n  ESCOLARIDAD DEL ALUMNO");
+    printf("\n--------------------------");
 
-    for (k = 0; k < largo; k++)
+    NodoLista *aux = e.cursos.prim;
+
+    while (aux != NULL)
     {
-        MostrarCurso(KEsimo(e, k));
+        MostrarCurso(aux->info, asignaturas);
+        aux = aux->sig;
     }
 }

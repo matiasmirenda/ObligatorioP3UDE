@@ -9,24 +9,21 @@ typedef struct
     int cantidad;
 } Asignaturas;
 
-// Crea una colección vacía de asignaturas.
+// Crea una colección vacía de asignaturas
 void CrearAsignaturas(Asignaturas &asignaturas);
 
-// Devuelve TRUE si existe una asignatura con el número indicado.
+// Devuelve TRUE si existe una asignatura con el número indicado o FALSE en caso contrario
 Boolean ExisteAsignatura(Asignaturas asignaturas, int numero);
 
-// Precondición:
-// - La asignatura fue creada correctamente.
-// - asignaturas.cantidad < TAMANIO
-// Registra una nueva asignatura asignándole automáticamente el
-// siguiente número disponible.
+// Registra una nueva asignatura asignándole automáticamente el siguiente número disponible
+// Precondición: La asignatura fue creada correctamente y hay espacio para agregarla (asignaturas.cantidad < TAMANIO)
 void RegistrarAsignatura(Asignaturas &asignaturas, Asignatura a);
 
+// Devuelve la asignatura correspondiente al número indicado
 // Precondición: ExisteAsignatura(asignaturas, numero)
-// Devuelve la asignatura correspondiente al número indicado.
 Asignatura ObtenerAsignatura(Asignaturas asignaturas, int numero);
 
-// Devuelve la cantidad de asignaturas registradas.
+// Devuelve la cantidad de asignaturas registradas
 int CantidadAsignaturas(Asignaturas asignaturas);
 
 // Lista todas las asignaturas

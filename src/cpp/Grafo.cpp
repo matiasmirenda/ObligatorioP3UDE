@@ -23,8 +23,6 @@ Boolean HayArista(Grafo G, int u, int v)
     return hay;
 }
 
-// Operacion auxiliar: recorrida DFS a partir de "actual", marcando
-// visitados, hasta encontrar "destino" o agotar el grafo.
 void DFS_Camino(Grafo G, int actual, int destino, Boolean visitado[MAX_ASIGNATURAS])
 {
     visitado[actual] = TRUE;
@@ -43,14 +41,8 @@ Boolean ExisteCamino(Grafo G, int origen, int destino)
     for (int i = 0; i < MAX_ASIGNATURAS; i++)
         visitado[i] = FALSE;
 
-    visitado[origen] = TRUE;
-    int j = 0;
-    while (j < MAX_ASIGNATURAS && !visitado[destino])
-    {
-        if (G[origen][j] && !visitado[j])
-            DFS_Camino(G, j, destino, visitado);
-        j++;
-    }
+    DFS_Camino(G, origen, destino, visitado);
+
     return visitado[destino];
 }
 
@@ -67,9 +59,6 @@ void PreviasInmediatas(Grafo G, int v, int pre[], int &cantPre)
     }
 }
 
-// Operacion auxiliar: recorrida DFS "hacia atras" (sobre el grafo
-// transpuesto) a partir de "actual", acumulando en previas[] todos
-// los vertices desde los que se puede llegar a "actual".
 void DFS_Previas(Grafo G, int actual, Boolean visitado[MAX_ASIGNATURAS],
                  int previas[], int &cantPrevias)
 {

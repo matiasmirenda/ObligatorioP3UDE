@@ -1,5 +1,6 @@
 #ifndef STRING_H_INCLUDED
 #define STRING_H_INCLUDED
+
 #include "Boolean.h"
 
 const int MAX = 80;
@@ -22,8 +23,5 @@ void scan(String &s);
 
 // Imprime el string s por pantalla
 void print(String s);
-
-// Determina si los strings s1 y s2 son iguales
-Boolean streq(String s1, String s2);
 
 #endif // STRING_H_INCLUDED

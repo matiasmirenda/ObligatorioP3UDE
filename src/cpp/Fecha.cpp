@@ -1,4 +1,4 @@
-#include "../include/Fecha.h"
+#include "Fecha.h"
 #include <stdio.h>
 
 void CargarFecha(Fecha &f)
@@ -14,16 +14,6 @@ void CargarFecha(Fecha &f)
 void DarFecha(Fecha f)
 {
     printf("%02d / %02d / %04d", f.dia, f.mes, f.anio);
-}
-
-Boolean EsMismaFecha(Fecha f1, Fecha f2)
-{
-    Boolean igual = FALSE;
-
-    if (f1.dia == f2.dia && f1.mes == f2.mes && f1.anio == f2.anio)
-        igual = TRUE;
-
-    return igual;
 }
 
 Boolean EsFechaMayor(Fecha f1, Fecha f2)

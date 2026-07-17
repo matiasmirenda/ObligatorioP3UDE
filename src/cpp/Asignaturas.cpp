@@ -1,4 +1,4 @@
-#include "../include/Asignaturas.h"
+#include "Asignaturas.h"
 
 void CrearAsignaturas(Asignaturas &asignaturas)
 {
@@ -18,8 +18,8 @@ Boolean ExisteAsignatura(Asignaturas asignaturas, int numero)
 
 void RegistrarAsignatura(Asignaturas &asignaturas, Asignatura a)
 {
-    AsignarNumeroAsignatura(a, CantidadAsignaturas(asignaturas));
-    Insertar(asignaturas.datos, a);
+    AsignarNumeroAsignatura(a, asignaturas.cantidad);
+    Insertar(asignaturas.datos, a, asignaturas.cantidad);
     asignaturas.cantidad++;
 }
 

@@ -1,4 +1,4 @@
-#include "../include/Alumnos.h"
+#include "Alumnos.h"
 
 void CrearAlumnos(Alumnos &alumnos)
 {
@@ -22,7 +22,7 @@ Alumno ObtenerAlumno(Alumnos alumnos, long int cedula)
 
 void ModificarAlumno(Alumnos &alumnos, Alumno a)
 {
-    Eliminar(alumnos, a.cedula);
+    Eliminar(alumnos, DarCedula(a));
     Insertar(alumnos, a);
 }
 
@@ -32,7 +32,7 @@ void MostrarAlumno(Alumnos alumnos, long int cedula)
     MostrarAlumnoEspecifico(ObtenerAlumno(alumnos, cedula));
 }
 
-void MostrarEscolaridadAlumno(Alumnos alumnos, long int cedula)
+void MostrarEscolaridadAlumno(Alumnos alumnos, Asignaturas asignaturas, long int cedula)
 {
-    MostrarEscolaridadEspecifica(ObtenerAlumno(alumnos, cedula));
+    MostrarEscolaridadEspecifica(ObtenerAlumno(alumnos, cedula), asignaturas);
 }

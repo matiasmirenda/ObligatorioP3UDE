@@ -1,4 +1,4 @@
-#include "../include/Curso.h"
+#include "Curso.h"
 #include <stdio.h>
 
 void CargarCurso(Curso &c)
@@ -8,6 +8,12 @@ void CargarCurso(Curso &c)
 
     printf("Fecha de finalizacion:\n");
     CargarFecha(c.fechaFinalizacion);
+
+    while (!EsFechaValida(c.fechaFinalizacion))
+    {
+        printf("Ingrese una fecha valida: ");
+        CargarFecha(c.fechaFinalizacion);
+    }
 
     printf("Calificacion final: ");
     scanf("%d", &c.calificacion);
@@ -32,20 +38,20 @@ Boolean CursoAprobado(Curso c)
 {
     Boolean aprobado = FALSE;
 
-    if (c.calificacion >= 6)
+    if (c.calificacion >= NOTA_APROBACION)
         aprobado = TRUE;
 
     return aprobado;
 }
 
-int numeroAsignatura;
-Fecha fechaFinalizacion;
-int calificacion;
-
-void MostrarCurso(Curso c)
+void MostrarCurso(Curso c, Asignaturas asignaturas)
 {
-    printf("\n  Curso %d\n", c.numeroAsignatura);
-    printf("\nFecha: ");
-    DarFecha(c.fechaFinalizacion);
-    printf("\n Calificacion: %d", c.calificacion);
+    printf("\n\nFecha: ");
+    DarFecha(DarFechaFinalizacionCurso(c));
+    printf("\n Curso %d", c.numeroAsignatura);
+    printf("\n Nombre: ");
+    print(DarNombreAsignatura(ObtenerAsignatura(asignaturas, DarNumeroAsignaturaCurso(c))));
+    printf("\n Calificacion: %d", DarCalificacionCurso(c));
+    printf("\n Aprobada: ");
+    Desplegar(CursoAprobado(c));
 }
