@@ -18,11 +18,6 @@ Boolean AgregarPrevia(Previaturas &P, int u, int v)
     return TRUE;
 }
 
-Boolean EsPreviaDirecta(Previaturas P, int u, int v)
-{
-    return HayArista(P, u, v);
-}
-
 void PreviasInmediatasDe(Previaturas P, int v, int pre[], int &cantPre)
 {
     PreviasInmediatas(P, v, pre, cantPre);

@@ -14,7 +14,6 @@ typedef struct
 typedef struct
 {
     Celda celdas[TAM];
-    int cantidad;
 } Mapeo;
 
 // Crea un mapeo vacío
@@ -25,14 +24,11 @@ void Crear(Mapeo &m);
 Boolean Pertenece(Mapeo m, int pos);
 
 // Registra la asignatura e en la siguiente posicion libre del mapeo.
-void Insertar(Mapeo &m, Asignatura e);
+void Insertar(Mapeo &m, Asignatura e, int pos);
 
 // Devuelve la asignatura registrada en la posición pos.
 // Precondición: en pos existe una asignatura registrada
 Asignatura Obtener(Mapeo m, int pos);
-
-// Devuelve la cantidad de asignaturas registradas
-int CantidadRegistradas(Mapeo m);
 
 // Lista todos los elementos existentes en el mapeo
 void ListarAsignaturasMapeo(Mapeo m, int cant);

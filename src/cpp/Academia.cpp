@@ -14,7 +14,7 @@ EstadoOperacion RegistrarNuevaAsignatura(
     Academia &academia,
     Asignatura asignatura)
 {
-    EstadoOperacion estado;
+    EstadoOperacion estado = OK;
 
     if (CantidadAsignaturas(academia.asignaturas) >= MAX_ASIGNATURAS)
     {
@@ -24,7 +24,6 @@ EstadoOperacion RegistrarNuevaAsignatura(
     {
 
         RegistrarAsignatura(academia.asignaturas, asignatura);
-        estado = OK;
     }
 
     return estado;
@@ -35,7 +34,7 @@ EstadoOperacion RegistrarPreviatura(
     int numeroPrevia,
     int numeroAsignatura)
 {
-    EstadoOperacion estado;
+    EstadoOperacion estado = OK;
 
     if (!ExisteAsignatura(academia.asignaturas, numeroPrevia))
     {
@@ -45,10 +44,6 @@ EstadoOperacion RegistrarPreviatura(
     {
         estado = ASIGNATURA2_NO_EXISTE;
     }
-    else if (numeroPrevia == numeroAsignatura)
-    {
-        estado = MISMA_ASIGNATURA;
-    }
     else if (!AgregarPrevia(
                  academia.previaturas,
                  numeroPrevia,
@@ -56,24 +51,17 @@ EstadoOperacion RegistrarPreviatura(
     {
         estado = PREVIATURA_GENERA_CICLO;
     }
-    else
-    {
-        estado = OK;
-    }
 
     return estado;
 }
 
-EstadoOperacion InscribirAlumnoAcademia(Academia &A)
+EstadoOperacion InscribirAlumnoAcademia(Academia &A, Alumno nuevoAlumno)
 {
-    Alumno nuevoAlumno;
-    CargarAlumno(nuevoAlumno);
-    EstadoOperacion estado;
+    EstadoOperacion estado = OK;
 
     if (!ExisteAlumno(A.alumnos, DarCedula(nuevoAlumno)))
     {
         InscribirAlumno(A.alumnos, nuevoAlumno);
-        estado = OK;
     }
     else
         estado = ALUMNO_YA_EXISTE;
@@ -83,7 +71,7 @@ EstadoOperacion InscribirAlumnoAcademia(Academia &A)
 
 Boolean TienePreviasInmediatasAprobadas(Academia &A, Alumno alumno, int numeroAsignatura)
 {
-    int pre[MAX_ASIGNATURAS];
+    int pre[MAX_ASIGNATURAS - 1];
     int cantPre = 0;
     PreviasInmediatasDe(A.previaturas, numeroAsignatura, pre, cantPre);
 
@@ -100,59 +88,59 @@ Boolean TienePreviasInmediatasAprobadas(Academia &A, Alumno alumno, int numeroAs
 
 EstadoOperacion RegistrarCursoAcademia(Academia &ac, long int cedula)
 {
-    Curso nuevoCurso;
-    CargarCurso(nuevoCurso);
-    EstadoOperacion estado;
-    int numeroAsignatura = DarNumeroAsignaturaCurso(nuevoCurso);
+    EstadoOperacion estado = OK;
 
     if (!ExisteAlumno(ac.alumnos, cedula))
     {
         estado = ALUMNO_NO_EXISTE;
     }
-    else if (!ExisteAsignatura(ac.asignaturas, numeroAsignatura))
-    {
-        estado = ASIGNATURA2_NO_EXISTE;
-    }
     else
     {
-        Alumno alumno = ObtenerAlumno(ac.alumnos, cedula);
+        Curso nuevoCurso;
+        CargarCurso(nuevoCurso);
 
-        if (TieneAsignaturaAprobadaAlumno(alumno, numeroAsignatura))
+        int numeroAsignatura = DarNumeroAsignaturaCurso(nuevoCurso);
+
+        if (!ExisteAsignatura(ac.asignaturas, numeroAsignatura))
         {
-            estado = ASIGNATURA_YA_APROBADA;
-        }
-        else if (!TienePreviasInmediatasAprobadas(ac, alumno, numeroAsignatura))
-        {
-            estado = PREVIAS_NO_APROBADAS;
+            estado = ASIGNATURA2_NO_EXISTE;
         }
         else
         {
-            Escolaridad esc = DarEscolaridad(alumno);
-            Boolean fechaValida = TRUE;
+            Alumno alumno = ObtenerAlumno(ac.alumnos, cedula);
 
-            if (!EsVacia(esc))
+            if (TieneAsignaturaAprobadaAlumno(alumno, numeroAsignatura))
             {
-                Curso ultimo = Ultimo(esc);
-                Fecha fechaUltimoCurso = DarFechaFinalizacionCurso(ultimo);
-
-                if (EsFechaMayor(fechaUltimoCurso, DarFechaFinalizacionCurso(nuevoCurso)))
-                    fechaValida = FALSE;
+                estado = ASIGNATURA_YA_APROBADA;
             }
-
-            if (!fechaValida)
+            else if (!TienePreviasInmediatasAprobadas(ac, alumno, numeroAsignatura))
             {
-                estado = FECHA_ANTERIOR_ULTIMO_CURSO;
+                estado = PREVIAS_NO_APROBADAS;
             }
             else
             {
-                nuevoCurso.numeroAsignatura = numeroAsignatura;
-                nuevoCurso.fechaFinalizacion = DarFechaFinalizacionCurso(nuevoCurso);
-                nuevoCurso.calificacion = DarCalificacionCurso(nuevoCurso);
+                Escolaridad esc = DarEscolaridad(alumno);
 
-                AgregarCursoAlumno(alumno, nuevoCurso);
-                ModificarAlumno(ac.alumnos, alumno);
+                if (!EsVacia(esc))
+                {
+                    Curso ultimo = Ultimo(esc);
+                    Fecha fechaUltimoCurso = DarFechaFinalizacionCurso(ultimo);
 
-                estado = OK;
+                    if (!EsFechaMayor(fechaUltimoCurso, DarFechaFinalizacionCurso(nuevoCurso)))
+                    {
+                        estado = FECHA_ANTERIOR_ULTIMO_CURSO;
+                    }
+                    else
+                    {
+                        AgregarCursoAlumno(alumno, nuevoCurso);
+                        ModificarAlumno(ac.alumnos, alumno);
+                    }
+                }
+                else
+                {
+                    AgregarCursoAlumno(alumno, nuevoCurso);
+                    ModificarAlumno(ac.alumnos, alumno);
+                }
             }
         }
     }
@@ -224,7 +212,7 @@ void MostrarDatosAlumnoAcademia(
     long int cedula)
 {
 
-    if (ExisteAlumno(academia.alumnos, cedula) == FALSE)
+    if (!ExisteAlumno(academia.alumnos, cedula))
     {
         printf("No existe un alumno con el documento ingresado");
     }
@@ -238,7 +226,7 @@ void MostrarEscolaridadAcademia(
     Academia academia,
     long int cedula)
 {
-    if (ExisteAlumno(academia.alumnos, cedula) == FALSE)
+    if (!ExisteAlumno(academia.alumnos, cedula))
     {
         printf("No existe un alumno con el documento ingresado");
     }

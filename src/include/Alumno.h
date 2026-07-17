@@ -19,15 +19,6 @@ void CargarAlumno(Alumno &A);
 // Retorna la cedula del alumno
 long int DarCedula(Alumno A);
 
-// Retorna el nombre del alumno
-void DarNombre(Alumno A, String &nombre);
-
-// Retorna el apellido del alumno
-void DarApellido(Alumno A, String &apellido);
-
-// Retorna el telefono del alumno
-void DarTelefono(Alumno A, String &telefono);
-
 // Retorna la escolaridad del alumno
 Escolaridad DarEscolaridad(Alumno A);
 

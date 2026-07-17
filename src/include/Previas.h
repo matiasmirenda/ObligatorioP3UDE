@@ -12,10 +12,6 @@ void CrearPreviaturas(Previaturas &P);
 // Precondición: u y v son dos asigaturas diferentes y existentes
 Boolean AgregarPrevia(Previaturas &P, int u, int v);
 
-// Retorna TRUE si u es previa directa de v o FALSE en caso contrario
-// Precondición: u y v son dos asigaturas existentes
-Boolean EsPreviaDirecta(Previaturas P, int u, int v);
-
 // Permite verificar que el alumno tenga aprobadas todas las previas inmediatas a v antes de cursarla
 // Precondición: v es una asigatura existente
 void PreviasInmediatasDe(Previaturas P, int v, int pre[], int &cantPre);

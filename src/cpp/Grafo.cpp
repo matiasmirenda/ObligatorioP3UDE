@@ -41,14 +41,8 @@ Boolean ExisteCamino(Grafo G, int origen, int destino)
     for (int i = 0; i < MAX_ASIGNATURAS; i++)
         visitado[i] = FALSE;
 
-    visitado[origen] = TRUE;
-    int j = 0;
-    while (j < MAX_ASIGNATURAS && !visitado[destino])
-    {
-        if (G[origen][j] && !visitado[j])
-            DFS_Camino(G, j, destino, visitado);
-        j++;
-    }
+    DFS_Camino(G, origen, destino, visitado);
+
     return visitado[destino];
 }
 

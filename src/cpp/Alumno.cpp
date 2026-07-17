@@ -28,19 +28,6 @@ long int DarCedula(Alumno A)
     return A.cedula;
 }
 
-void DarNombre(Alumno A, String &nombre)
-{
-    strcop(nombre, A.nombre);
-}
-void DarApellido(Alumno A, String &apellido)
-{
-    strcop(apellido, A.apellido);
-}
-void DarTelefono(Alumno A, String &telefono)
-{
-    strcop(telefono, A.telefono);
-}
-
 Escolaridad DarEscolaridad(Alumno A)
 {
     return A.escolaridad;

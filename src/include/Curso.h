@@ -4,6 +4,8 @@
 #include "Fecha.h"
 #include "Asignaturas.h"
 
+const int NOTA_APROBACION = 6;
+
 typedef struct
 {
     int numeroAsignatura;
@@ -23,7 +25,7 @@ Fecha DarFechaFinalizacionCurso(Curso c);
 // Devuelve la calificación final del curso
 int DarCalificacionCurso(Curso c);
 
-// Devuelve TRUE si el curso está aprobado O FALSE en caso contrario
+// Devuelve TRUE si el curso está aprobado o FALSE en caso contrario
 Boolean CursoAprobado(Curso c);
 
 // Muestra un curso por pantalla

@@ -28,7 +28,7 @@ EstadoOperacion RegistrarPreviatura(
     int numeroAsignatura);
 
 // Inscribe un alumno en la academia
-EstadoOperacion InscribirAlumnoAcademia(Academia &A);
+EstadoOperacion InscribirAlumnoAcademia(Academia &A, Alumno nuevoAlumno);
 
 // Devuelve TRUE si el alumno indicado tiene aprobadas todas las previas de la asignatura indicada
 Boolean TienePreviasInmediatasAprobadas(Academia &A, Alumno alumno, int numeroAsignatura);

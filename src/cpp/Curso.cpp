@@ -9,6 +9,12 @@ void CargarCurso(Curso &c)
     printf("Fecha de finalizacion:\n");
     CargarFecha(c.fechaFinalizacion);
 
+    while (!EsFechaValida(c.fechaFinalizacion))
+    {
+        printf("Ingrese una fecha valida: ");
+        CargarFecha(c.fechaFinalizacion);
+    }
+
     printf("Calificacion final: ");
     scanf("%d", &c.calificacion);
 }
@@ -32,7 +38,7 @@ Boolean CursoAprobado(Curso c)
 {
     Boolean aprobado = FALSE;
 
-    if (c.calificacion >= 6)
+    if (c.calificacion >= NOTA_APROBACION)
         aprobado = TRUE;
 
     return aprobado;

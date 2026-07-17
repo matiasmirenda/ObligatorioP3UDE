@@ -63,7 +63,10 @@ void OpcionRegistrarPreviatura(Academia &academia)
 void OpcionInscribirAlumno(Academia &academia)
 {
     printf("\n--- Inscribir alumno ---\n");
-    EstadoOperacion estado = InscribirAlumnoAcademia(academia);
+    Alumno nuevoAlumno;
+    CargarAlumno(nuevoAlumno);
+
+    EstadoOperacion estado = InscribirAlumnoAcademia(academia, nuevoAlumno);
 
     MostrarEstadoOperacion(estado);
 }
@@ -72,8 +75,8 @@ void OpcionRegistrarCursoEscolaridad(Academia &academia)
 {
     printf("\n--- Registrar curso ---\n");
 
-    long int ci;
     printf("Documento del alumno: ");
+    long int ci;
     scanf("%ld", &ci);
 
     EstadoOperacion estado = RegistrarCursoAcademia(academia, ci);

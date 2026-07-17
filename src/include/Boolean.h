@@ -9,9 +9,6 @@ typedef enum
     TRUE
 } Boolean;
 
-// Cargar valor boolean desde teclado
-void Cargar(Boolean &b);
-
 // Mostrar valor booleano en pantalla
 void Desplegar(Boolean b);
 

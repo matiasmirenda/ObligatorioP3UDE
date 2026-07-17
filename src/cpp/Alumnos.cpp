@@ -22,7 +22,7 @@ Alumno ObtenerAlumno(Alumnos alumnos, long int cedula)
 
 void ModificarAlumno(Alumnos &alumnos, Alumno a)
 {
-    Eliminar(alumnos, a.cedula);
+    Eliminar(alumnos, DarCedula(a));
     Insertar(alumnos, a);
 }
 
